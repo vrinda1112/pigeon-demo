@@ -1,0 +1,297 @@
+{% extends "layout.html" %}  {% load static %}
+{% block  content %}
+<div class="row">
+    <div class="col-md-12 col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">FILL NIPPLE PRODUCTION DETAILS</h4>
+                <form class="form-prodcution" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Item
+                                    Code</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control">
+                                        <option>FO011</option>
+                                        <option>FO012</option>
+                                        <option>FO013</option>
+                                        <option>FO014</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Product
+                                    Type</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control">
+                                        <option>S</option>
+                                        <option>M</option>
+                                        <option>L</option>
+                                        <option>Y</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Shift</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" onchange="toggle_time()">
+                                        <option>A</option>
+                                        <option>B</option>
+                                        <option>C</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">HOUR</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" >
+                                        <option>00-01</option>
+                                        <option>01-02</option>
+                                        <option>02-03</option>
+                                        <option>03-04</option>
+                                        <option>04-05</option>
+                                        <option>05-06</option>
+                                        <option>06-07</option>
+                                        <option>07-08</option>
+                                        <option>08-09</option>
+                                        <option>09-10</option>
+                                        <option>10-11</option>
+                                        <option>11-12</option>
+                                        <option>12-13</option>
+                                        <option>13-14</option>
+                                        <option>14-15</option>
+                                        <option>15-16</option>
+                                        <option>16-17</option>
+                                        <option>17-18</option>
+                                        <option>18-19</option>
+                                        <option>19-20</option>
+                                        <option>20-21</option>
+                                        <option>21-22</option>
+                                        <option>22-23</option>
+                                        <option>23-00</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">LOT No.</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" placeholder="HE01NA"
+                                           name="lot_no">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Piece weight</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" placeholder="6.5g"
+                                           name="avg_weight">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Bin/Box number</label>
+                                <div class="col-sm-9">
+                                    <input type="number" class="form-control"
+                                           placeholder="Physical bin number"
+                                           name="phy_bin_no">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Material code</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control"
+                                           placeholder="PB203" value="PB203"
+                                           name="rmat_code">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Material Lot no</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control"
+                                           placeholder="PB203" value=""
+                                           name="rmat_lot_no">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Total Good Production</label>
+                                <div class="col-sm-9">
+                                    <input type="number" class="form-control"
+                                           placeholder="Total good production"
+                                           name="total_good_prod">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-lg-12">
+        <div class="card grid-margin stretch-card">
+            <div class="card-header">
+                <h4 class="card-title">FILL REJECTION DETAILS</h4>
+            </div>
+            <div class="card-body">
+                <div class="form-group row">
+                    <form class="forms-sample">
+                        <div class="form-group">
+                            <label for="dark_spot">Dark
+                                spot</label>
+                            <input type="number"
+                                   class="form-control"
+                                   id="dark_spot">
+                        </div>
+                        <div class="form-group">
+                            <label for="bubbles">Bubbles</label>
+                            <input type="number"
+                                   class="form-control"
+                                   id="bubbles">
+                        </div>
+                        <div class="form-group">
+                            <label for="weld_line">Weld
+                                Line</label>
+                            <input type="number"
+                                   class="form-control"
+                                   id="weld_line">
+                        </div>
+                        <div class="form-group">
+                            <label for="shot_short">Shotshort</label>
+                            <input type="number"
+                                   class="form-control"
+                                   id="shot_short">
+                        </div>
+                        <div class="form-group">
+                            <label for="deforamtion">Deformation</label>
+                            <input type="number"
+                                   class="form-control"
+                                   id="deforamtion">
+                        </div>
+                        <div class="form-group">
+                            <label for="white_spot">White
+                                Spot</label>
+                            <input type="number"
+                                   class="form-control"
+                                   id="white_spot">
+                        </div>
+                        <div class="form-group">
+                            <label for="contamination">Contanmination</label>
+                            <input type="number"
+                                   class="form-control"
+                                   id="contamination">
+                        </div>
+                        <div class="form-group">
+                            <label for="silicon_thread">Silicon
+                                Thread</label>
+                            <input type="number"
+                                   class="form-control"
+                                   id="silicon_thread">
+                        </div>
+                        <div class="form-group">
+                            <label for="cured_silicon">Cured
+                                Silicon</label>
+                            <input type="number"
+                                   class="form-control"
+                                   id="cured_silicon">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-lg-12">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">DOWNTIME DETAILS, IF ANY</h4>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Middle Plate</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control"
+                                       placeholder="Time in mins"
+                                       name="mid_plate">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Filter issue</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control"
+                                       placeholder="Time in mins"
+                                       name="filter_issue">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-12 col-lg-12">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">WASTAGE DETAILS, IF ANY</h4>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Purging wastage(in kgs)</label>
+                            <div class="col-sm-9">
+                                <input type="number" placeholder=""
+                                       name="purge_wastage">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Drum A wastage</label>
+                            <div class="col-sm-9">
+                                <input type="number" placeholder=""
+                                       name="drum_a">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Drum B wastage</label>
+                            <div class="col-sm-9">
+                                <input type="number" placeholder=""
+                                       name="drum_b">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit
+                    </button>
+                    <button class="btn btn-light">Cancel
+                    </button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

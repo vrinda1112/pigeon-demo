@@ -1,364 +1,901 @@
 {% extends "layout.html" %}  {% load static %}
+{% block styleclass %}
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2) !important;
+  background-color: rgba(245, 245, 245, 0.4) !important;
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2) !important;
+}
+{% endblock %}
 {% block  content %}
-<script src="/static/js/dashboard.js"></script>
-  <!-- partial -->
+<!-- partial -->
 <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
+    <div class="content-wrapper">
+        <div class="row">
             <div class="col-md-12 grid-margin">
-              <div class="row">
-                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold">Welcome Himanshu</h3>
-                  <h6 class="font-weight-normal mb-0">All systems are running smoothly! </h6>
-                </div>
-                <div class="col-12 col-xl-4">
-                 <div class="justify-content-end d-flex">
-                  <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                    <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                     <i class="mdi mdi-calendar"></i> Today (10 Jan 2021)
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
-                      <a class="dropdown-item" href="#">January - March</a>
-                      <a class="dropdown-item" href="#">March - June</a>
-                      <a class="dropdown-item" href="#">June - August</a>
-                      <a class="dropdown-item" href="#">August - November</a>
-                    </div>
-                  </div>
-                 </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4 grid-margin transparent">
-              <div class="row">
-                <div class="col-md-6 mb-4 stretch-card transparent">
-                  <div class="card card-tale">
-                    <div class="card-body">
-                      <b class="mb-4">Today’s Production</b>
-                      <div class="row">
-                          <div class="col-md-6">
-                              <label class="fs-30">Bottle</label>
-                              <b class="fs-30 mb-2">2200</b>
-                          </div>
-                          <div class="col-md-6">
-                            <label class="fs-30">Nipple</label>
-                            <b class="fs-30 mb-2">1200</b>
-                            </div>
-                        </div>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 mb-4 stretch-card transparent">
-                  <div class="card card-light-blue">
-                    <div class="card-body">
-                        <b class="mb-4">Total Good Production</b>
-                        <div class="row">
-                          <div class="col-md-6">
-                              <label class="fs-30">Bottle</label>
-                              <b class="fs-30 mb-2">2200</b>
-                          </div>
-                          <div class="col-md-6">
-                            <label class="fs-30">Nipple</label>
-                            <b class="fs-30 mb-2">1200</b>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
-                  <div class="card card-light-danger">
-                    <div class="card-body">
-                      <b class="mb-4">Today's Bad Production</b>
-                      <div class="row">
-                          <div class="col-md-6">
-                              <label class="fs-30">Bottle</label>
-                              <b class="fs-30 mb-2">2200</b>
-                          </div>
-                          <div class="col-md-6">
-                            <label class="fs-30">Nipple</label>
-                            <b class="fs-30 mb-2">1200</b>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 stretch-card transparent">
-                  <div class="card card-light-danger">
-                    <div class="card-body">
-                      <b class="mb-4">Set up rejection</b>
-                      <div class="row">
-                          <div class="col-md-6">
-                              <label class="fs-30">Bottle</label>
-                              <b class="fs-30 mb-2">2200</b>
-                          </div>
-                          <div class="col-md-6">
-                            <label class="fs-30">Nipple</label>
-                            <b class="fs-30 mb-2">1200</b>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 grid-margin grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Bottle production this hour</h4>
-                  <canvas id="pieChart_bottle"></canvas>
-
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 grid-margin grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Nipple production this hour</h4>
-                  <canvas id="pieChart_nipple"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-      <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
-              <div class="card position-relative">
-                <div class="card-body">
-                  <div id="detailedReports" class="carousel slide detailed-report-carousel position-static pt-2" data-ride="carousel">
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <div class="row">
-                          <div class="col-md-12 col-xl-3 d-flex flex-column justify-content-start">
-                            <div class="ml-xl-4 mt-3">
-                            <p class="card-title">Detailed Prodcution Details Today </p>
-                              <h1 class="text-primary">Nipple</h1>
-                              <p class="mb-2 mb-xl-0">The detailed numbers of nipples produced, rejected and taken for QC today </p>
-                            </div>
-                            </div>
-                          <div class="col-md-12 col-xl-9">
-                            <div class="row">
-                              <div class="col-md-6 border-right">
-                                <div class="table-responsive mb-3 mb-md-0 mt-3">
-                                  <table class="table table-borderless report-table">
-                                    <tr>
-                                      <td class="text-muted">Total Production today</td>
-                                      <td class="w-100 px-0">
-                                        <div class="progress progress-md mx-4">
-                                          <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                      </td>
-                                      <td><h5 class="font-weight-bold mb-0">713</h5></td>
-                                    </tr>
-                                    <tr>
-                                      <td class="text-muted">Total Bad Production</td>
-                                      <td class="w-100 px-0">
-                                        <div class="progress progress-md mx-4">
-                                          <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                      </td>
-                                      <td><h5 class="font-weight-bold mb-0">583</h5></td>
-                                    </tr>
-                                    <tr>
-                                      <td class="text-muted">Set up Rejection</td>
-                                      <td class="w-100 px-0">
-                                        <div class="progress progress-md mx-4">
-                                          <div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                      </td>
-                                      <td><h5 class="font-weight-bold mb-0">924</h5></td>
-                                    </tr>
-                                    <tr>
-                                      <td class="text-muted">QC Samples taken</td>
-                                      <td class="w-100 px-0">
-                                        <div class="progress progress-md mx-4">
-                                          <div class="progress-bar bg-info" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                      </td>
-                                      <td><h5 class="font-weight-bold mb-0">664</h5></td>
-                                    </tr>
-                                    <tr>
-                                      <td class="text-muted">Total Good Production</td>
-                                      <td class="w-100 px-0">
-                                        <div class="progress progress-md mx-4">
-                                          <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                      </td>
-                                      <td><h5 class="font-weight-bold mb-0">560</h5></td>
-                                    </tr>
-                                    <tr>
-                                      <td class="text-muted">Raw material consumed</td>
-                                      <td class="w-100 px-0">
-                                        <div class="progress progress-md mx-4">
-                                          <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                      </td>
-                                      <td><h5 class="font-weight-bold mb-0">70 kg</h5></td>
-                                    </tr>
-                                  </table>
-                                </div>
-                              </div>
-
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="carousel-item">
-                        <div class="row">
-                          <div class="col-md-12 col-xl-3 d-flex flex-column justify-content-start">
-                            <div class="ml-xl-4 mt-3">
-                            <p class="card-title">Detailed  Production Details Today </p>
-                              <h1 class="text-primary">Bottle</h1>
-                              <p class="mb-2 mb-xl-0">The detailed numbers of bottles produced, rejected and taken for QC today</p>
-                            </div>
-                            </div>
-                          <div class="col-md-12 col-xl-9">
-                            <div class="row">
-                              <div class="col-md-6 border-right">
-                                <div class="table-responsive mb-3 mb-md-0 mt-3">
-                                  <table class="table table-borderless report-table">
-                                    <tr>
-                                      <td class="text-muted">Total Production today</td>
-                                      <td class="w-100 px-0">
-                                        <div class="progress progress-md mx-4">
-                                          <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                      </td>
-                                      <td><h5 class="font-weight-bold mb-0">713</h5></td>
-                                    </tr>
-                                    <tr>
-                                      <td class="text-muted">Total Bad Production</td>
-                                      <td class="w-100 px-0">
-                                        <div class="progress progress-md mx-4">
-                                          <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                      </td>
-                                      <td><h5 class="font-weight-bold mb-0">583</h5></td>
-                                    </tr>
-                                    <tr>
-                                      <td class="text-muted">Set up Rejection</td>
-                                      <td class="w-100 px-0">
-                                        <div class="progress progress-md mx-4">
-                                          <div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                      </td>
-                                      <td><h5 class="font-weight-bold mb-0">924</h5></td>
-                                    </tr>
-                                    <tr>
-                                      <td class="text-muted">QC Samples taken</td>
-                                      <td class="w-100 px-0">
-                                        <div class="progress progress-md mx-4">
-                                          <div class="progress-bar bg-info" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                      </td>
-                                      <td><h5 class="font-weight-bold mb-0">664</h5></td>
-                                    </tr>
-                                    <tr>
-                                      <td class="text-muted">Total Good Production</td>
-                                      <td class="w-100 px-0">
-                                        <div class="progress progress-md mx-4">
-                                          <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                      </td>
-                                      <td><h5 class="font-weight-bold mb-0">560</h5></td>
-                                    </tr>
-                                    <tr>
-                                      <td class="text-muted">Raw Matreial consumed</td>
-                                      <td class="w-100 px-0">
-                                        <div class="progress progress-md mx-4">
-                                          <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                      </td>
-                                      <td><h5 class="font-weight-bold mb-0">60kg</h5></td>
-                                    </tr>
-                                  </table>
-                                </div>
-                              </div>
-                              <div class="col-md-6 mt-3">
-                                <canvas id="north-america-chart"></canvas>
-                                <div id="north-america-legend"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#detailedReports" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#detailedReports" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-	  <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                 <div class="d-flex justify-content-between">
-                  <p class="card-title">Production Report</p>
-                 </div>
-                  <p class="font-weight-500">The total production month wise</p>
-                  <div id="sales-legend" class="chartjs-legend mt-4 mb-2"></div>
-                  <canvas id="sales-chart"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col-md-12 stretch-card grid-margin grid-margin-md-0">
-            <div class="card data-icon-card-primary">
-              <div class="card-body">
-
                 <div class="row">
-                  <div class="col-2 text-white">
-                    <p class="card-title text-white">Downtimes reported</p>
-                    <h3>0</h3>
-                    <p class="text-white font-weight-500 mb-0">The total number downtime reported in a week</p>
-                  </div>
-                  <div class="col-2 text-white">
-                    <p class="card-title text-white">Most productive shift</p>
-                    <h3>B</h3>
-                    <p class="text-white font-weight-500 mb-0">Most productive shift this week</p>
-                  </div>
-                  <div class="col-2 text-white">
-                    <p class="card-title text-white">Main Nipple Rejection Reason</p>
-                    <h3>Dark spot</h3>
-                    <p class="text-white font-weight-500 mb-0">607 nipples were rejected due to this reason this week</p>
-                  </div>
-                  <div class="col-2 text-white">
-                    <p class="card-title text-white">Main Bottle Rejection Reason</p>
-                    <h3>Weld line</h3>
-                    <p class="text-white font-weight-500 mb-0">454 bottles were rejected due to this reason this week</p>
-                  </div>
-                  <div class="col-2 text-white">
-                    <p class="card-title text-white">Material Consumption</p>
-                    <h3>600kg</h3>
-                    <p class="text-white font-weight-500 mb-0">Raw material consumed this week</p>
-                  </div>
-
-                  </div>
+                    <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                        <h3 class="font-weight-bold">Welcome Himanshu</h3>
+                        <h6 class="font-weight-normal mb-0">All systems are
+                            running smoothly! </h6>
+                    </div>
+                    <div class="col-12 col-xl-4">
+                        <div class=" justify-content-end d-flex">
+                            <div class="row flex-md-grow-1 flex-xl-grow-0">
+                                <div class="col-md-4" style="color:#4747A1">
+                                    <h5 class="font-weight-bold">Today's Plan </h5>
+                                    <h6 class="font-weight-bold" id="chaldate" >{{ date }}</h6>
+                                </div>
+                                <div class="col-md-4">
+                                    <h4 class="font-weight-bold">Nipple 5000</h4>
+                                </div>
+                                <div class="col-md-4">
+                                <h4 class="font-weight-bold">Bottle 3400</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
+        <div class="row">
+<!--            <div class="col-lg-12 blur z-index-2 border-radius-xl mt-n7 p-4 bg-white-5 shadow-blur">-->
+<!--                <div class="d-flex flex-column flex-lg-row justify-content-center text-dark">-->
+<!--                    <div class="d-flex flex-column flex-xl-row">-->
+<!--                        <div class="pe-lg-6 text-center position-relative mb-5 mb-xl-0">-->
+<!--                            <p class="opacity-7 text-uppercase mb-0 mb-3">reviews from <br> 20,000+ developers</p>-->
+<!--                            <span class="display-5 font-weight-bolder d-block">4.9/5</span>-->
+<!--                            <span class="text-success h6"><i class="fas fa-arrow-up" aria-hidden="true"></i> 2,700 (14%)</span>-->
+<!--                            <hr class="vertical dark d-none d-xl-block"> </div>-->
+<!--                        <div class="pe-lg-6 pe-0 ps-lg-0 ps-xl-6 text-center position-relative mb-5 mb-xl-0">-->
+<!--                            <p class="opacity-7 text-uppercase mb-0 mb-3">All our Premium <br> products</p>-->
+<!--                            <span class="display-5 font-weight-bolder d-block">221</span> <span class="text-success h6">-->
+<!--                            <i class="fas fa-arrow-up" aria-hidden="true"></i> 50 (26%)</span> <hr class="vertical dark d-none d-xl-block"> </div> </div> <div class="d-flex flex-column flex-xl-row"> <div class="px-xl-6 px-0 text-center position-relative mb-5 mb-xl-0"> <p class="opacity-7 text-uppercase mb-0 mb-3">Developers using <br> our products</p> <span class="display-5 font-weight-bolder d-block">1,744,748</span> <span class="text-success h6"><i class="fas fa-arrow-up" aria-hidden="true"></i> 350,000 (26%)</span> <hr class="vertical dark d-none d-xl-block"> </div> <div class="ps-xl-6 ps-0 text-center"> <p class="opacity-7 text-uppercase mb-0 mb-3">github stars <br> from community</p> <span class="display-5 font-weight-bolder d-block">39,000+</span> <span class="text-success h6"><i class="fas fa-arrow-up" aria-hidden="true"></i> 1,032 (10%)</span> </div> </div> </div> </div>-->
+            <div class="col-lg-3 col-md-6 mb-4 stretch-card">
+                <div class="card card-transparent">
+                    <center>
+                    <h3 class="mb-3 mt-2" style="background:rgb(160,221,11)"><strong>LIM 1 </strong></h3>
+                    <b style="color:green">WORKING</b>
+                </center>
+                </div>
+            </div>
+
+             <div class="col-lg-3 col-md-6 mb-4 stretch-card">
+                <div class="card card-transparent">
+                    <center>
+                    <h3 class="mb-3 mt-2" style="background:rgb(160,221,11)"><strong>LIM 2 </strong></h3>
+                    <b style="color:green">WORKING</b>
+                </center>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 stretch-card">
+                <div class="card card-transparent">
+                    <center>
+                    <h3 class="mb-3 mt-2" style="background:rgb(160,221,11)"><strong>LIM 3</strong></h3>
+                    <b style="color:green">WORKING</b>
+                </center>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 stretch-card">
+                <div class="card card-transparent">
+                    <center>
+                    <h3 class="mb-3 mt-2" style="background:rgb(241,63,43)"><strong>LIM 4 </strong></h3>
+                    <b style="color:red">STOPPED</b>
+                </center>
+                </div>
+            </div>
+        <div class="row mt-2">
+            <div class="col-md-4 grid-margin transparent">
+                  <h3>Last Day's Planned Vs Actual</h3>
+                <div class="row mt-4">
+                    <div class="col-md-6 mb-4 stretch-card transparent">
+                        <div class="card card-dark-blue">
+                            <div class="card-body">
+                                <b class="mb-4">Total Production</b>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="fs-30">Bottle</label>
+                                        <b class="fs-30 mb-2">690</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="fs-30">Nipple</label>
+                                        <b class="fs-30 mb-2">712</b>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4 stretch-card transparent">
+                        <div class="card card-dark-green" >
+                            <div class="card-body">
+                                <b class="mb-4">Total Good Production</b>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="fs-30">Bottle</label>
+                                        <b class="fs-30 mb-2">600</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="fs-30">Nipple</label>
+                                        <b class="fs-30 mb-2">570</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+                        <div class="card card-light-danger" >
+                            <div class="card-body">
+                                <b class="mb-4">Today's Bad Production</b>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="fs-30">Bottle</label>
+                                        <b class="fs-30 mb-2">60</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="fs-30">Nipple</label>
+                                        <b class="fs-30 mb-2">102</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 stretch-card transparent">
+                        <div class="card card-light-warning">
+                            <div class="card-body">
+                                <b class="mb-4">Set up rejection</b>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="fs-30">Bottle</label>
+                                        <b class="fs-30 mb-2">30</b>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="fs-30">Nipple</label>
+                                        <b class="fs-30 mb-2">42</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 grid-margin grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Bottle production this hour</h4>
+                        <canvas id="pieChart_bottle"></canvas>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 grid-margin grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Nipple production this hour</h4>
+                        <canvas id="pieChart_nipple"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card position-relative">
+                    <div class="card-body">
+                        <div id="detailedReports"
+                             class="carousel slide detailed-report-carousel position-static pt-2"
+                             data-ride="carousel">
+                            <div class="carousel-inner">
+
+                                <div class="carousel-item active">
+                                    <div class="row">
+                                        <div class="col-md-12 col-xl-3 d-flex flex-column justify-content-start">
+                                            <div class="ml-xl-4 mt-3">
+                                                <p class="card-title">Detailed
+                                                    Prodcution Details
+                                                    Today </p>
+                                                <h1 class="text-primary">Nipple
+                                                    - SHIFT A</h1>
+                                                <p class="mb-2 mb-xl-0">The
+                                                    detailed numbers of nipples
+                                                    produced, rejected and
+                                                    taken for QC today </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-xl-9">
+                                            <div class="row">
+                                                <div class="col-md-6 border-right">
+                                                    <div class="table-responsive mb-3 mb-md-0 mt-3">
+                                                        <table class="table table-borderless report-table">
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Total
+                                                                    Production
+                                                                    today
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-primary"
+                                                                             role="progressbar"
+                                                                             style="width: 70%"
+                                                                             aria-valuenow="70"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        713</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Total Bad
+                                                                    Production
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-warning"
+                                                                             role="progressbar"
+                                                                             style="width: 30%"
+                                                                             aria-valuenow="30"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        583</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Set up
+                                                                    Rejection
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-danger"
+                                                                             role="progressbar"
+                                                                             style="width: 95%"
+                                                                             aria-valuenow="95"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        924</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    QC Samples
+                                                                    taken
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-info"
+                                                                             role="progressbar"
+                                                                             style="width: 60%"
+                                                                             aria-valuenow="60"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        664</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Total Good
+                                                                    Production
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-primary"
+                                                                             role="progressbar"
+                                                                             style="width: 40%"
+                                                                             aria-valuenow="40"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        560</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Raw
+                                                                    material
+                                                                    consumed
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-danger"
+                                                                             role="progressbar"
+                                                                             style="width: 75%"
+                                                                             aria-valuenow="75"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        70
+                                                                        kg</h5>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mt-3">
+                                                    <canvas id="doughnut_nipple_a"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item ">
+                                    <div class="row">
+                                        <div class="col-md-12 col-xl-3 d-flex flex-column justify-content-start">
+                                            <div class="ml-xl-4 mt-3">
+                                                <p class="card-title">Detailed
+                                                    Prodcution Details
+                                                    Today </p>
+                                                <h1 class="text-primary">Nipple
+                                                    - SHIFT B</h1>
+                                                <p class="mb-2 mb-xl-0">The
+                                                    detailed numbers of nipples
+                                                    produced, rejected and
+                                                    taken for QC today </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-xl-9">
+                                            <div class="row">
+                                                <div class="col-md-6 border-right">
+                                                    <div class="table-responsive mb-3 mb  -md-0 mt-3">
+                                                        <table class="table table-borderless report-table">
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Total
+                                                                    Production
+                                                                    today
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-primary"
+                                                                             role="progressbar"
+                                                                             style="width: 70%"
+                                                                             aria-valuenow="70"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        713</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Total Bad
+                                                                    Production
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-warning"
+                                                                             role="progressbar"
+                                                                             style="width: 30%"
+                                                                             aria-valuenow="30"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        583</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Set up
+                                                                    Rejection
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-danger"
+                                                                             role="progressbar"
+                                                                             style="width: 95%"
+                                                                             aria-valuenow="95"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        924</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    QC Samples
+                                                                    taken
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-info"
+                                                                             role="progressbar"
+                                                                             style="width: 60%"
+                                                                             aria-valuenow="60"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        664</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Total Good
+                                                                    Production
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-primary"
+                                                                             role="progressbar"
+                                                                             style="width: 40%"
+                                                                             aria-valuenow="40"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        560</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Raw
+                                                                    material
+                                                                    consumed
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-danger"
+                                                                             role="progressbar"
+                                                                             style="width: 75%"
+                                                                             aria-valuenow="75"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        70
+                                                                        kg</h5>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                  <div class="col-md-6 mt-3">
+                                                    <canvas id="doughnut_nipple_b"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
+                                        <div class="col-md-12 col-xl-3 d-flex flex-column justify-content-start">
+                                            <div class="ml-xl-4 mt-3">
+                                                <p class="card-title">Detailed
+                                                    Production Details
+                                                    Today </p>
+                                                <h1 class="text-primary">Bottle
+                                                    -SHIFT A</h1>
+                                                <p class="mb-2 mb-xl-0">The
+                                                    detailed numbers of bottles
+                                                    produced, rejected and
+                                                    taken for QC today</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-xl-9">
+                                            <div class="row">
+                                                <div class="col-md-6 border-right">
+                                                    <div class="table-responsive mb-3 mb-md-0 mt-3">
+                                                        <table class="table table-borderless report-table">
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Total
+                                                                    Production
+                                                                    today
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-primary"
+                                                                             role="progressbar"
+                                                                             style="width: 70%"
+                                                                             aria-valuenow="70"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        713</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Total Bad
+                                                                    Production
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-warning"
+                                                                             role="progressbar"
+                                                                             style="width: 30%"
+                                                                             aria-valuenow="30"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        583</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Set up
+                                                                    Rejection
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-danger"
+                                                                             role="progressbar"
+                                                                             style="width: 95%"
+                                                                             aria-valuenow="95"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        924</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    QC Samples
+                                                                    taken
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-info"
+                                                                             role="progressbar"
+                                                                             style="width: 60%"
+                                                                             aria-valuenow="60"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        664</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Total Good
+                                                                    Production
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-primary"
+                                                                             role="progressbar"
+                                                                             style="width: 40%"
+                                                                             aria-valuenow="40"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        560</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Raw
+                                                                    Matreial
+                                                                    consumed
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-danger"
+                                                                             role="progressbar"
+                                                                             style="width: 75%"
+                                                                             aria-valuenow="75"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        60kg</h5>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                 <div class="col-md-6 mt-3">
+                                                    <canvas id="doughnut_bottle_a"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
+                                        <div class="col-md-12 col-xl-3 d-flex flex-column justify-content-start">
+                                            <div class="ml-xl-4 mt-3">
+                                                <p class="card-title">Detailed
+                                                    Production Details
+                                                    Today </p>
+                                                <h1 class="text-primary">Bottle
+                                                    -SHIFT B</h1>
+                                                <p class="mb-2 mb-xl-0">The
+                                                    detailed numbers of bottles
+                                                    produced, rejected and
+                                                    taken for QC today</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-xl-9">
+                                            <div class="row">
+                                                <div class="col-md-6 border-right">
+                                                    <div class="table-responsive mb-3 mb-md-0 mt-3">
+                                                        <table class="table table-borderless report-table">
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Total
+                                                                    Production
+                                                                    today
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-primary"
+                                                                             role="progressbar"
+                                                                             style="width: 70%"
+                                                                             aria-valuenow="70"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        713</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Total Bad
+                                                                    Production
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-warning"
+                                                                             role="progressbar"
+                                                                             style="width: 30%"
+                                                                             aria-valuenow="30"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        583</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Set up
+                                                                    Rejection
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-danger"
+                                                                             role="progressbar"
+                                                                             style="width: 95%"
+                                                                             aria-valuenow="95"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        924</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    QC Samples
+                                                                    taken
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-info"
+                                                                             role="progressbar"
+                                                                             style="width: 60%"
+                                                                             aria-valuenow="60"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        664</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Total Good
+                                                                    Production
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-primary"
+                                                                             role="progressbar"
+                                                                             style="width: 40%"
+                                                                             aria-valuenow="40"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        560</h5>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-muted">
+                                                                    Raw
+                                                                    Matreial
+                                                                    consumed
+                                                                </td>
+                                                                <td class="w-100 px-0">
+                                                                    <div class="progress progress-md mx-4">
+                                                                        <div class="progress-bar bg-danger"
+                                                                             role="progressbar"
+                                                                             style="width: 75%"
+                                                                             aria-valuenow="75"
+                                                                             aria-valuemin="0"
+                                                                             aria-valuemax="100"></div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="font-weight-bold mb-0">
+                                                                        60kg</h5>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mt-3">
+                                                    <canvas id="doughnut_bottle_b"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
 
+                            </div>
+                            <a class="carousel-control-prev"
+                               href="#detailedReports" role="button"
+                               data-slide="prev">
+                                <span class="carousel-control-prev-icon"
+                                      aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next"
+                               href="#detailedReports" role="button"
+                               data-slide="next">
+                                <span class="carousel-control-next-icon"
+                                      aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <p class="card-title">Production Report</p>
+                        </div>
+                        <p class="font-weight-500">The total production month
+                            wise</p>
+                        <div id="sales-legend"
+                             class="chartjs-legend mt-4 mb-2"></div>
+                        <canvas id="sales-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
+        <div class="col-md-12 stretch-card grid-margin grid-margin-md-0">
+            <div class="card data-icon-card-primary">
+                <div class="card-body">
 
+                    <div class="row">
+                        <div class="col-2 text-white">
+                            <p class="card-title text-white">Downtimes
+                                reported</p>
+                            <h3>0</h3>
+                            <p class="text-white font-weight-500 mb-0">The
+                                total number downtime reported in a week</p>
+                        </div>
+                        <div class="col-2 text-white">
+                            <p class="card-title text-white">Most productive
+                                shift</p>
+                            <h3>B</h3>
+                            <p class="text-white font-weight-500 mb-0">Most
+                                productive shift this week</p>
+                        </div>
+                        <div class="col-2 text-white">
+                            <p class="card-title text-white">Main Nipple
+                                Rejection Reason</p>
+                            <h3>Dark spot</h3>
+                            <p class="text-white font-weight-500 mb-0">607
+                                nipples were rejected due to this reason this
+                                week</p>
+                        </div>
+                        <div class="col-2 text-white">
+                            <p class="card-title text-white">Main Bottle
+                                Rejection Reason</p>
+                            <h3>Weld line</h3>
+                            <p class="text-white font-weight-500 mb-0">454
+                                bottles were rejected due to this reason this
+                                week</p>
+                        </div>
+                        <div class="col-2 text-white">
+                            <p class="card-title text-white">Material
+                                Consumption</p>
+                            <h3>600kg</h3>
+                            <p class="text-white font-weight-500 mb-0">Raw
+                                material consumed this week</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- content-wrapper ends -->
+<!-- partial:partials/_footer.html -->
 
 
 {% endblock %}

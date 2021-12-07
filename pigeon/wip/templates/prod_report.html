@@ -19,36 +19,16 @@
 {% block styleclass %}
 {% endblock %}
 {% block content %}
-
 <div class="card">
     <div class="card-header bg-transparent  border-white">
             <center>
-        <h3> LIM : CHECKLIST  </h3>
+        <h3> Production Sheet - Nov</h3>
             </center>
-        <div class="row">
-            <label class="requiredField" for="machine" id="site_label">Select LIM Machine:&nbsp;</label>
-                <select class="form-control" id="machine">
-                    <option value="Lim-1">LIM1 - Nipple</option>
-                    <option value="Lim-2">LIM2 - Nipple</option>
-                </select>
-            <button class="ml-2 mt-2 btn btn-md btn-primary" onclick="get_data();"
-                    title="Update Report" type="button">
-                Update
-            </button>
-        </div>
     </div>
-        <div id="tabl_div" class="ml-5 mt-3">
-            <table id="datatables_lim_check" class="mdl-data-table table-hover" style="width: 1300px; !important;">
-                <thead>
-                <tr>
-                    <th>Parameters</th>
-                    <th>Value</th>
-                    <th>Remarks</th>
-                </tr>
-                </thead>
-            </table>
-        </div>
- </div>
+    <div class="card-body">
+        <table id="data_table" class="mdl-data-table table-hover " style="width:100%;"></table>
+    </div>
+</div>
 
 {% endblock %}
 {% block js %}
@@ -58,7 +38,7 @@
 <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 <script type="text/javascript" src="//cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
-#added
+
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/4.0.1/js/dataTables.fixedColumns.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
@@ -74,45 +54,43 @@
 
 
 <script type="text/javascript">
-function get_data(){
-    mac_no= $("#machine").val();
-    $('#datatables_lim_check').DataTable({
-              "destroy": true,
-              "dom": 'Bfrtip',
-              "aLengthMenu": [
-            [20, 50, 100, -1],
-            [20, 50, 100, "All"]
-        ],
-              "ajax":{
-                   "url":'lim_checklist_report/',
-                   "data": {'mac_no':mac_no, 'rtype':'lim_check'},
-                   "contentType": "application/json",
-                    "dataType": "json",
-                   beforeSend: function(xhr) {
-                         xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
-                     },
+$(document).ready(function () {
 
-                "dataSrc": function (response) {
-                return response.data
-                }
-            },
-            "columns" : [
-                        {"data": "parameters"},
-                   { "data": "values"},
-                   {"data": "remarks"}
-                 ],
-             "columnDefs":
-            [{
-                        targets: ['_all'],
-                        className: 'mdc-data-table__cell',
-            }],
+    var columns = []; // array
+    var response = null;
+                $('#data_table').DataTable({
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": function (data, callback, settings) {
+                        $.ajax({
+                            url: 'prod_report_ajax/',
+                            type: 'POST',
+                            data: data,
+                            success: function (data) {
+                                response = data.data;
+                                alert(response);
 
-             });
-    $('#datatables_lim_check').show();
+                                $.each(response[0], function (key, value) {
+                                    var my_item = {};
+                                    my_item.title = key;
+                                    my_item.data = key;
+                                    columns.push(my_item);
 
-}
+                                });
+
+                                //console.log(response);
+                                callback(data);
+                            }
+                        })
+                    },
+                    "data": response,
+                    "columns": columns
+
+                });
 
 
+
+});
 
 </script>
 

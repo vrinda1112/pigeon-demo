@@ -22089,6 +22089,10 @@ code {
   background: #4747A1;
   color: #ffffff;
 }
+.card.card-dark-green {
+  background: #008000;
+  color: #ffffff;
+}
 
 .card.card-dark-blue:hover {
   background: #5050b2;
@@ -22104,12 +22108,21 @@ code {
 }
 
 .card.card-light-danger {
-  background: #F3797E;
+  background: #e62020;
   color: #ffffff;
 }
 
 .card.card-light-danger:hover {
-  background: #f59095;
+  background: #ff033e;
+}
+
+.card.card-light-warning {
+  background: #FF8C00;
+  color: #ffffff;
+}
+.card.card-light-warning:hover {
+  background: #FFA500;
+
 }
 
 .card-inverse-primary {
