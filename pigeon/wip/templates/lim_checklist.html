@@ -38,7 +38,7 @@
         </div>
     </div>
         <div id="tabl_div" class="ml-5 mt-3">
-            <table id="datatables_lim_check" class="mdl-data-table table-hover" style="width: 1300px; !important;">
+            <table id="datatables_lim_check" class="mdl-data-table table-bordered" style="width: 1300px; !important;">
                 <thead>
                 <tr>
                     <th>Parameters</th>
@@ -84,7 +84,7 @@ function get_data(){
             [20, 50, 100, "All"]
         ],
               "ajax":{
-                   "url":'lim_checklist_report/',
+                   "url":'/lim_checklist_report',
                    "data": {'mac_no':mac_no, 'rtype':'lim_check'},
                    "contentType": "application/json",
                     "dataType": "json",

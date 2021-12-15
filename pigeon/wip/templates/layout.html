@@ -19,7 +19,7 @@
   <!-- inject:css-skydash -->
   <link rel="stylesheet" href="/static/css/vertical-layout-light/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="/static/images/favicon.png" />
+  <link rel="shortcut icon" href="/static/images/title-piegon.svg" />
 
   <link rel="stylesheet" href="/static/vendors/select2/select2.min.css">
   <link rel="stylesheet" href="/static/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
@@ -30,6 +30,7 @@
 {% endblock %}
 </head>
 <style>
+
 {% block style %}
 {% endblock %}
 </style>
@@ -42,7 +43,7 @@
         <a class="navbar-brand brand-logo mr-5" href=""><img src="/static/images/pigeonlogo.svg" class="mr-2" alt="logo"/></a>
         <a class="navbar-brand brand-logo-mini" href=""><img src="/static/images/pigeonlogo.svg" alt="logo"/></a>
       </div>
-      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+      <div class="navbar-menu-wrapper navbar-custom-css d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
           <span class="icon-menu"></span>
         </button>
@@ -425,7 +426,7 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="/">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -436,14 +437,15 @@
               <span class="menu-title">LIM Reports</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="lim">
+            </li>
+            <li class="collapse" id="lim">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/report">Checklist</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/param_report">Parameter's Report</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/checklist_report">Checklist</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/">Parameter's Report</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/prod_report">Production</a></li>
               </ul>
-            </div>
-          </li>
+            </li>
+
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#nipple_dash" aria-expanded="false" aria-controls="form-elements">
               <i><img src="/static/images/nipples.png"></i>&nbsp;
@@ -454,7 +456,7 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="/prod_report">Production Reports</a></li>
                 <li class="nav-item"><a class="nav-link" href="/prod_report">Molding Reports</a></li>
-                <li class="nav-item"><a class="nav-link" href="/qc_report">QC Reports</a></li>
+                <li class="nav-item"><a class="nav-link" href="/ppc_view/nipple">PPC</a></li>
               </ul>
             </div>
           </li>
@@ -467,7 +469,7 @@
             <div class="collapse" id="charts">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="/prod_report  ">Production Reports</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/static/pages/charts/chartjs.html">QC Reports</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/ppc_view/bottle">PPC</a></li>
               </ul>
             </div>
           </li>

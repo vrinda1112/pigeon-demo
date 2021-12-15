@@ -1,17 +1,77 @@
 {% extends "layout.html" %}  {% load static %}
-{% block styleclass %}
-.card {
-  /* Add shadows to create the "card" effect */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2) !important;
-  background-color: rgba(245, 245, 245, 0.4) !important;
-  transition: 0.3s;
+{% block style %}
+
+
+.flip-card {
+  background-color: transparent;
+  width: 175px;
+  height: 230px;
+  perspective: 500px;
 }
 
-/* On mouse-over, add a deeper shadow */
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2) !important;
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 2s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #fff;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #fff;
+  color: black;
+  transform: rotateY(180deg);
+}
+
+.dot-green{
+  height: 25px;
+  width: 25px;
+  background-color: green;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot-breakdown{
+  height: 25px;
+  width: 25px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot-hold{
+  height: 25px;
+  width: 25px;
+  background-color: orange;
+  border-radius: 50%;
+  display: inline-block;
+}
+.bottom{
+    position:absolute;
+    bottom:0;
+    margin-left:50;
 }
 {% endblock %}
+{% block js%}
+<script src="/static/js/dashboard.js"></script>
+{%endblock%}
 {% block  content %}
 <!-- partial -->
 <div class="main-panel">
@@ -35,74 +95,70 @@
                                     <h4 class="font-weight-bold">Nipple 5000</h4>
                                 </div>
                                 <div class="col-md-4">
-                                <h4 class="font-weight-bold">Bottle 3400</h4>
+                                    <h4 class="font-weight-bold">Bottle <br>3400</h4>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-<!--            <div class="col-lg-12 blur z-index-2 border-radius-xl mt-n7 p-4 bg-white-5 shadow-blur">-->
-<!--                <div class="d-flex flex-column flex-lg-row justify-content-center text-dark">-->
-<!--                    <div class="d-flex flex-column flex-xl-row">-->
-<!--                        <div class="pe-lg-6 text-center position-relative mb-5 mb-xl-0">-->
-<!--                            <p class="opacity-7 text-uppercase mb-0 mb-3">reviews from <br> 20,000+ developers</p>-->
-<!--                            <span class="display-5 font-weight-bolder d-block">4.9/5</span>-->
-<!--                            <span class="text-success h6"><i class="fas fa-arrow-up" aria-hidden="true"></i> 2,700 (14%)</span>-->
-<!--                            <hr class="vertical dark d-none d-xl-block"> </div>-->
-<!--                        <div class="pe-lg-6 pe-0 ps-lg-0 ps-xl-6 text-center position-relative mb-5 mb-xl-0">-->
-<!--                            <p class="opacity-7 text-uppercase mb-0 mb-3">All our Premium <br> products</p>-->
-<!--                            <span class="display-5 font-weight-bolder d-block">221</span> <span class="text-success h6">-->
-<!--                            <i class="fas fa-arrow-up" aria-hidden="true"></i> 50 (26%)</span> <hr class="vertical dark d-none d-xl-block"> </div> </div> <div class="d-flex flex-column flex-xl-row"> <div class="px-xl-6 px-0 text-center position-relative mb-5 mb-xl-0"> <p class="opacity-7 text-uppercase mb-0 mb-3">Developers using <br> our products</p> <span class="display-5 font-weight-bolder d-block">1,744,748</span> <span class="text-success h6"><i class="fas fa-arrow-up" aria-hidden="true"></i> 350,000 (26%)</span> <hr class="vertical dark d-none d-xl-block"> </div> <div class="ps-xl-6 ps-0 text-center"> <p class="opacity-7 text-uppercase mb-0 mb-3">github stars <br> from community</p> <span class="display-5 font-weight-bolder d-block">39,000+</span> <span class="text-success h6"><i class="fas fa-arrow-up" aria-hidden="true"></i> 1,032 (10%)</span> </div> </div> </div> </div>-->
-            <div class="col-lg-3 col-md-6 mb-4 stretch-card">
-                <div class="card card-transparent">
-                    <center>
-                    <h3 class="mb-3 mt-2" style="background:rgb(160,221,11)"><strong>LIM 1 </strong></h3>
-                    <b style="color:green">WORKING</b>
-                </center>
+            <h3><strong> MACHINE STATUS TODAY & YESTERDAY </strong></h3>
+        </div>
+        <div class="row mt-3">
+            {% for k,v  in machines.data.items %}
+            <div class="col-auto mb-2 mr-2">
+                <div class="flip-card">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-back ">
+<!--                      <img src="/static/images/pigeonlogo.svg" alt="Avatar" style="width:60px;height:60px;">-->
+                        <h2 style="background:#4B49AC!important;color:white;" class="mb-4">{{ k }}</h2>
+                        <h3>{{ machines.yesterday.k }}</h3>
+                            <a href="/prod_report" style="color:#4B49AC;">
+                                <b>OEE: </b><b>{{ machines.yesterday.k.oee }} 96 %</b><br><br>
+                                <b>Rejection Rate: </b><b>{{ machines.yesterday.k.rej }} 0.9 %</b><br><br>
+                                <b>Plan vs Actual: </b><b>{{ machines.yesterday.k.rej }} 98% </b><br>
+                            </a>
+                            <center class="bottom">
+                                     <b>{{ yester }}</b>
+                            </center>
+                    </div>
+                    <div class="flip-card-front">
+                         {% if v == "Working" %}
+                            <h2 class="mt-2" style="background:green!important;color:white;">{{ k }}</h2><br><br>
+                        {% else %}
+                        <h2 class="mt-2" style="background:orange!important;color:white;">{{ k }}</h2><br><br>
+                           {% endif %}
+                        <b class="mb-2">{{ v }}</b><br>
+                         <a href="/prod_report"></a><b class="mb-2">{{ v }}</b><br>
+                          <center class="bottom">
+                                <b>{{ date }}</b>
+                          </center>
+                    </div>
+                  </div>
                 </div>
             </div>
+            {% endfor %}
+        </div>
 
-             <div class="col-lg-3 col-md-6 mb-4 stretch-card">
-                <div class="card card-transparent">
-                    <center>
-                    <h3 class="mb-3 mt-2" style="background:rgb(160,221,11)"><strong>LIM 2 </strong></h3>
-                    <b style="color:green">WORKING</b>
-                </center>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4 stretch-card">
-                <div class="card card-transparent">
-                    <center>
-                    <h3 class="mb-3 mt-2" style="background:rgb(160,221,11)"><strong>LIM 3</strong></h3>
-                    <b style="color:green">WORKING</b>
-                </center>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4 stretch-card">
-                <div class="card card-transparent">
-                    <center>
-                    <h3 class="mb-3 mt-2" style="background:rgb(241,63,43)"><strong>LIM 4 </strong></h3>
-                    <b style="color:red">STOPPED</b>
-                </center>
-                </div>
-            </div>
-        <div class="row mt-2">
+        <div class="row mt-4">
+            <h4>Last hour Production Details</h4>
+        </div>
+        <div class ="row mt-2">
             <div class="col-md-4 grid-margin transparent">
-                  <h3>Last Day's Planned Vs Actual</h3>
                 <div class="row mt-4">
-                    <div class="col-md-6 mb-4 stretch-card transparent">
+                    <div class="col-md-6 mb-4 stretch-card">
                         <div class="card card-dark-blue">
                             <div class="card-body">
                                 <b class="mb-4">Total Production</b>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
                                         <label class="fs-30">Bottle</label>
                                         <b class="fs-30 mb-2">690</b>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
                                         <label class="fs-30">Nipple</label>
                                         <b class="fs-30 mb-2">712</b>
                                     </div>
@@ -111,16 +167,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-4 stretch-card transparent">
+                    <div class="col-md-6 mb-4 stretch-card ">
                         <div class="card card-dark-green" >
                             <div class="card-body">
                                 <b class="mb-4">Total Good Production</b>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
                                         <label class="fs-30">Bottle</label>
                                         <b class="fs-30 mb-2">600</b>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
                                         <label class="fs-30">Nipple</label>
                                         <b class="fs-30 mb-2">570</b>
                                     </div>
@@ -166,19 +222,19 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 grid-margin grid-margin stretch-card">
-                <div class="card">
+            <div class="col-md-4 grid-margin ">
+                <div class="card transparent">
                     <div class="card-body">
-                        <h4 class="card-title">Bottle production this hour</h4>
+                        <h3 class="card-title">Bottle production this hour</h3>
                         <canvas id="pieChart_bottle"></canvas>
 
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 grid-margin grid-margin stretch-card">
-                <div class="card">
+            <div class="col-md-4 grid-margin grid-margin">
+                <div class="card transparent">
                     <div class="card-body">
-                        <h4 class="card-title">Nipple production this hour</h4>
+                        <h3 class="card-title">Nipple production this hour</h3>
                         <canvas id="pieChart_nipple"></canvas>
                     </div>
                 </div>
@@ -271,7 +327,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <h5 class="font-weight-bold mb-0">
-                                                                        924</h5>
+                                                                        0.1%</h5>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -424,7 +480,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <h5 class="font-weight-bold mb-0">
-                                                                        924</h5>
+                                                                        0%</h5>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -577,7 +633,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <h5 class="font-weight-bold mb-0">
-                                                                        924</h5>
+                                                                        0.3%</h5>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -689,7 +745,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <h5 class="font-weight-bold mb-0">
-                                                                        713</h5>
+                                                                          713</h5>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -729,7 +785,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <h5 class="font-weight-bold mb-0">
-                                                                        924</h5>
+                                                                        0.4%</h5>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -826,7 +882,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
+            <div class="col-md-12 col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
@@ -841,8 +897,6 @@
                 </div>
             </div>
         </div>
-
-
         <div class="col-md-12 stretch-card grid-margin grid-margin-md-0">
             <div class="card data-icon-card-primary">
                 <div class="card-body">
@@ -894,8 +948,7 @@
 </div>
 </div>
 
-<!-- content-wrapper ends -->
-<!-- partial:partials/_footer.html -->
+
 
 
 {% endblock %}

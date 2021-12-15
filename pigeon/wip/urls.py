@@ -8,8 +8,8 @@ urlpatterns = [
     # TelePro Api Starts Here
     path('login/', Login.as_view(), name='login'),
     path('',Homepage.as_view(),name="home"),
-    path('report/', Reports.as_view()),
-    path('report/lim_checklist_report/', lim_checklist_report),
+    path('checklist_report/', Reports.as_view()),
+    path('lim_checklist_report/', lim_checklist_report),
     path('production_sheet_form/',prod_sheet_input),
     path('ppc_view/<slug:item>',ppc_view),
     path('prod_report_ajax',demo_prod_report_ajax),

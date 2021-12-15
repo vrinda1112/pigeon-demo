@@ -106,7 +106,7 @@
       &.active {
         border-radius: 8px;
         > .nav-link {
-            background: $sidebar-light-menu-active-bg;
+            background: #ff6e4a;
             position: relative;
             i,
             .menu-title,
@@ -127,7 +127,7 @@
           i,
           .menu-title,
           .menu-arrow {
-            color: $sidebar-light-menu-active-color;
+            color: #ff6e4a;
           }
         }
 
@@ -142,7 +142,7 @@
         margin-top: .2rem;
         &:hover {
           > .nav-link, &[aria-expanded="true"] {
-            background: $sidebar-light-menu-hover-bg;
+            background: #ff6e4a;
             color: $sidebar-light-menu-hover-color;                    
           }
         }
@@ -208,7 +208,7 @@
     .nav {
       .nav-item {
         .nav-link {
-          color: $sidebar-dark-menu-color;
+          color: #ff6e4a;
           i {
             color: inherit;
             &.menu-icon {
@@ -226,7 +226,7 @@
         }
         &.active {
           > .nav-link {
-            background: $sidebar-dark-menu-active-bg;
+            background: #ff6e4a;
             .menu-title,
             i {
               color: $sidebar-dark-menu-active-color; 
@@ -238,13 +238,13 @@
         > .nav-item {
           &:hover {
             > .nav-link {
-              background: $sidebar-dark-menu-hover-bg;
+              background: #ff6e4a;
               color: $sidebar-dark-menu-hover-color;                                    
             }
           }
           .nav-link {
             &[aria-expanded="true"] {
-              background: #1a1f26;
+              background: #ff6e4a;
             }
           }
         }

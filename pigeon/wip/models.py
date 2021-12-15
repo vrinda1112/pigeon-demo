@@ -183,3 +183,40 @@ class LIMProductionCounters(models.Model):
     total_line_rejection = models.IntegerField(blank=True)
     qc_samples_taken = models.IntegerField(blank=True, null=True)
     qc_samples_ok = models.IntegerField(blank=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

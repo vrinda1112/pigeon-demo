@@ -22111,6 +22111,12 @@ code {
 .card.card-light-danger:hover {
   background: #f59095;
 }
+.card.card-light-warning {
+  background: #FF8C00;
+}
+.card.card-light-warning:hover {
+  background: FFA500;
+}
 
 .card-inverse-primary {
   background: rgba(75, 73, 172, 0.2);
