@@ -207,9 +207,9 @@
     }
   } );
 
- var doughnutPieData = {
+ var PieData_bottle = {
     datasets: [{
-      data: [300, 50, 250],
+      data: [690, 90, 600],
       backgroundColor: [
 
         '#4747A1',
@@ -222,10 +222,76 @@
     // These labels appear in the legend and in the tooltips when hovering different arcs
     labels: [
       'Total production today',
-      'Not Good',
-      'Total correct',
+      'Total bad Production',
+      'Total Good',
     ]
   };
+  var PieData_nipple = {
+    datasets: [{
+      data: [712, 154, 570],
+      backgroundColor: [
+
+        '#4747A1',
+        'red',
+        '#008000'
+      ],
+
+    }],
+
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [
+      'Total production today',
+      'Total bad production',
+      'Total Good',
+    ]
+  };
+  var doughnut_bottle_a = {
+    datasets: [{
+      data: [2885, 800, 2085,40,60],
+      backgroundColor: [
+
+        '#4747A1',
+        'red',
+        '#008000',
+        '#FF8C00',
+        '#ff7f50'
+      ],
+
+    }],
+
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [
+      'Total production today',
+      'Total bad Production',
+      'Total Good',
+      'Set up rejection',
+      'QC samples taken'
+    ]
+  };
+    var doughnut_nipple_a = {
+    datasets: [{
+      data: [7400, 400, 7000,40,100],
+      backgroundColor: [
+
+        '#4747A1',
+        'red',
+        '#008000',
+        '#FF8C00',
+        '#ff7f50'
+      ],
+
+    }],
+
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [
+      'Total production today',
+      'Total bad Production',
+      'Total Good',
+      'Set up rejection',
+      'QC samples taken'
+    ]
+  };
+
   var doughnutPieOptions = {
     responsive: true,
     animation: {
@@ -234,17 +300,18 @@
     }
   };
 
+
     var pieChartCanvas = $("#pieChart_bottle").get(0).getContext("2d");
     var pieChart = new Chart(pieChartCanvas, {
       type: 'pie',
-      data: doughnutPieData,
+      data: PieData_bottle,
       options: doughnutPieOptions
     });
 
   var pieChartCanvas = $("#pieChart_nipple").get(0).getContext("2d");
     var pieChart = new Chart(pieChartCanvas, {
       type: 'pie',
-      data: doughnutPieData,
+      data: PieData_nipple,
       options: doughnutPieOptions
     });
 
@@ -252,26 +319,26 @@
     var doughnutChartCanvas = $("#doughnut_nipple_a").get(0).getContext("2d");
     var doughnutChart = new Chart(doughnutChartCanvas, {
       type: 'doughnut',
-      data: doughnutPieData,
+      data: doughnut_nipple_a,
       options: doughnutPieOptions
     });
 
     var doughnutChartCanvas = $("#doughnut_nipple_b").get(0).getContext("2d");
     var doughnutChart = new Chart(doughnutChartCanvas, {
       type: 'doughnut',
-      data: doughnutPieData,
+      data: doughnut_nipple_a,
       options: doughnutPieOptions
     });
     var doughnutChartCanvas = $("#doughnut_bottle_a").get(0).getContext("2d");
     var doughnutChart = new Chart(doughnutChartCanvas, {
       type: 'doughnut',
-      data: doughnutPieData,
+      data: doughnut_bottle_a,
       options: doughnutPieOptions
     });
     var doughnutChartCanvas = $("#doughnut_bottle_b").get(0).getContext("2d");
     var doughnutChart = new Chart(doughnutChartCanvas, {
       type: 'doughnut',
-      data: doughnutPieData,
+      data: doughnut_bottle_a,
       options: doughnutPieOptions
     });
 
