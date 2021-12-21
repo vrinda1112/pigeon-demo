@@ -1,4 +1,13 @@
 {% extends "layout.html" %}  {% load static %}
+{% block style %}
+.padding-0{
+    padding-right:0;
+    padding-left:0;
+}
+.active{
+    display:block;
+}
+{% endblock %}
 {% block  content %}
 <form class="form-prodcution" method="post">
     {% csrf_token %}
@@ -6,13 +15,12 @@
     <div class="col-md-12 col-lg-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">FILL NIPPLE PRODUCTION DETAILS</h4>
+                <div class="card-header mb-1">
+                    <h4 class="card-title">FILL NIPPLE PRODUCTION DETAILS</h4></div>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Item
-                                    Code</label>
-                                <div class="col-sm-9">
+                        <div class="col padding-0">
+                                <div class="col">
+                                    <label><strong> Item Code</strong></label>
                                     <select class="form-control" required>
                                         <option>FO011</option>
                                         <option>FO012</option>
@@ -20,13 +28,10 @@
                                         <option>FO014</option>
                                     </select>
                                 </div>
-                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Product
-                                    Type</label>
-                                <div class="col-sm-9">
+                        <div class="col padding-0">
+                                <div class="col-sm-12">
+                                    <label><strong>Product Type</strong></label>
                                     <select class="form-control" required>
                                         <option>S</option>
                                         <option>M</option>
@@ -34,212 +39,494 @@
                                         <option>Y</option>
                                     </select>
                                 </div>
-                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Shift</label>
-                                <div class="col-sm-9">
-                                    <select class="form-control" id="shifts" required>
+                        <div class="col padding-0">
 
+                                <label><strong>Shift</strong></label>
+                                <div class="col">
+                                    <select class="form-control" id="shifts" required>
+                                        <option>A</option>
+                                        <option>B</option>
+                                        <option>C</option>
                                     </select>
                                 </div>
-                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">HOUR</label>
-                                <div class="col-sm-9">
-                                    <select class="form-control" id="hours" required>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">LOT No.</label>
-                                <div class="col-sm-9">
+                        <div class="col padding-0">
+                            <label><strong>LOT No.</strong></label>
+                                <div class="col">
                                     <input class="form-control" placeholder="HE01NA"
                                            name="lot_no" required>
                                 </div>
-                            </div>
+
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Piece weight</label>
-                                <div class="col-sm-9">
+                        <div class="col padding-0">
+                            <label><strong>Piece weight</strong></label>
+                                <div class="col">
                                     <input class="form-control" placeholder="6.5g"
                                            name="avg_weight" required>
                                 </div>
-                            </div>
                         </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Bin/Box number</label>
-                                <div class="col-sm-9">
-                                    <input type="number" class="form-control"
-                                           placeholder="Physical bin number"
-                                           name="phy_bin_no" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Material code</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control"
-                                           placeholder="PB203" value="PB203"
-                                           name="rmat_code" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Material Lot no</label>
-                                <div class="col-sm-9">
+                        <div class="colpadding-0">
+                            <label><strong>Material Lot no</strong></label>
+                                <div class="col">
                                     <input type="text" class="form-control"
                                            placeholder="PB203" value=""
                                            name="rmat_lot_no" required>
                                 </div>
-                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Total Good Production</label>
-                                <div class="col-sm-9">
+                        <div class="col padding-0">
+
+                            <label><strong>Total Good Production</strong></label>
+                                <div class="col">
                                     <input type="number" class="form-control"
                                            placeholder="Total good production"
                                            name="total_good_prod" required>
                                 </div>
-                            </div>
+
                         </div>
-                    </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-12 col-lg-12">
-        <div class="card grid-margin stretch-card">
-            <div class="card-header">
-                <h4 class="card-title">FILL REJECTION DETAILS</h4>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label for="dark_spot">Dark
-                                spot</label>
-                            <input type="number"
-                                   class="form-control"
-                                   id="dark_spot">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label for="bubbles">Bubbles</label>
-                            <input type="number"
-                                   class="form-control"
-                                   id="bubbles">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label for="weld_line">Weld
-                                Line</label>
-                            <input type="number"
-                                   class="form-control"
-                                   id="weld_line">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label for="shot_short">Shotshort</label>
-                            <input type="number"
-                                   class="form-control"
-                                   id="shot_short">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label for="deforamtion">Deformation</label>
-                            <input type="number"
-                                   class="form-control"
-                                   id="deforamtion">
-                        </div>
-                    </div>
-            </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="white_spot">White
-                                    Spot</label>
-                                <input type="number"
-                                       class="form-control"
-                                       id="white_spot">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="contamination">Contanmination</label>
-                                <input type="number"
-                                       class="form-control"
-                                       id="contamination">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="silicon_thread">Silicon
-                                    Thread</label>
-                                <input type="number"
-                                       class="form-control"
-                                       id="silicon_thread">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="cured_silicon">Cured
-                                    Silicon</label>
-                                <input type="number"
-                                       class="form-control" id="cured_silicon">
-                            </div>
+                        <div class="col padding-0">
+
+                            <label><strong>Material code</strong></label>
+                                <div class="col">
+                                    <input type="text" class="form-control"
+                                           placeholder="PB203" value="PB203"
+                                           name="rmat_code" required>
+                                </div>
+
                         </div>
                 </div>
 
             </div>
-        </div>
-    </div>
-    <div class="col-md-12 col-lg-12">
-        <div class="row">
-            <div class="col-md-12 col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">DOWNTIME DETAILS, IF ANY</h4>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Middle Plate</label>
-                            <div class="col-sm-9">
-                                <input type="number" class="form-control mt-3"
-                                       placeholder="Time in mins" name="mid_plate">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Filter issue</label>
-                            <div class="col-sm-9">
-                                <input type="number" class="form-control mt-3"
-                                       placeholder="Time in mins" name="filter_issue">
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
         </div>
-
     </div>
-    <div class="col-md-12 col-lg-12">
+    <div class="shift-wise">
+        <div class="col-lg-12 col-md-12 active">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="card-header">
+                            <h4 class="card-title">REJECTION DETAILS, IF ANY</h4>
+                        </div>
+                      <div class="table-responsive pt-3">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>
+                                REJECTION LIST
+                              </th>
+                              <th>
+                                7-8
+                              </th>
+                              <th>
+                                8-9
+                              </th>
+                              <th>
+                                9-10
+                              </th>
+                              <th>
+                                10-11
+                              </th>
+                                <th>
+                                11-12
+                              </th>
+                                <th>
+                                12-13
+                              </th>
+                                <th>
+                                13-14
+                              </th>
+                                <th>
+                                14-15
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>
+                                    Dark Spot
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control"  id="dark_spot_7_8">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot_8_9">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot_9_10">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+
+                                </tr>
+                              <tr>
+                                  <td>
+                                    Bubbles
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="bubbles">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+
+                                </tr>
+                              <tr>
+                                  <td>
+                                    Weld Line
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+
+                                </tr>
+                              <tr>
+                                  <td>
+                                    Shotshort
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+
+                                </tr>
+                              <tr>
+                                  <td>Deformation
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+
+                                </tr>
+                              <tr>
+                                  <td>
+                                   White Spot
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+
+                                </tr>
+                              <tr>
+                                  <td>
+                                    Contanmination
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+
+                                </tr>
+                              <tr>
+                                  <td>
+                                    Silicon Thread
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+
+                                </tr>
+                              <tr>
+                                  <td>
+                                   Cured Silicon
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control" id="dark_spot">
+                                  </td>
+
+                                </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div >
+        <div class="col-md-12 col-lg-12">
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">DOWNTIME DETAILS, IF ANY</h4>
+                        </div>
+                        <div class="table-responsive pt-3">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>
+                                DOWNTINE
+                              </th>
+                              <th>
+                                7-8
+                              </th>
+                              <th>
+                                8-9
+                              </th>
+                              <th>
+                                9-10
+                              </th>
+                              <th>
+                                10-11
+                              </th>
+                                <th>
+                                11-12
+                              </th>
+                                <th>
+                                12-13
+                              </th>
+                                <th>
+                                13-14
+                              </th>
+                                <th>
+                                14-15
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+
+                            <tr>
+                              <td>
+                                Middle plate
+                              </td>
+                              <td>
+                                <input type="number" class="form-control" id="dark_spot">
+                              </td>
+                              <td>
+                                <input type="number" class="form-control" id="dark_spot">
+                              </td>
+                              <td>
+                                <input type="number" class="form-control" id="dark_spot">
+                              </td>
+                              <td>
+                                <input type="number" class="form-control" id="dark_spot">
+                              </td>
+                              <td>
+                                <input type="number" class="form-control" id="dark_spot">
+                              </td>
+                              <td>
+                                <input type="number" class="form-control" id="dark_spot">
+                              </td>
+                              <td>
+                                <input type="number" class="form-control" id="dark_spot">
+                              </td>
+                              <td>
+                                <input type="number" class="form-control" id="dark_spot">
+                              </td>
+
+                            </tr>
+                          <tr>
+                              <td>
+                                Filter issue
+                              </td>
+                              <td>
+                                <input type="number" class="form-control" id="dark_spot">
+                              </td>
+                              <td>
+                                <input type="number" class="form-control" id="dark_spot">
+                              </td>
+                              <td>
+                                <input type="number" class="form-control" id="dark_spot">
+                              </td>
+                              <td>
+                                <input type="number" class="form-control" id="dark_spot">
+                              </td>
+                              <td>
+                                <input type="number" class="form-control" id="dark_spot">
+                              </td>
+                              <td>
+                                <input type="number" class="form-control" id="dark_spot">
+                              </td>
+                              <td>
+                                <input type="number" class="form-control" id="dark_spot">
+                              </td>
+                              <td>
+                                <input type="number" class="form-control" id="dark_spot">
+                              </td>
+
+                            </tr>
+                          </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-12 col-lg-12">
         <div class="row">
             <div class="col-md-12 col-lg-12">
                 <div class="card">
@@ -247,44 +534,147 @@
                         <h4 class="card-title">WASTAGE DETAILS, IF ANY</h4>
                     </div>
 
+                    <div class="table-responsive pt-3">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>
+                            WASTAGE
+                          </th>
+                          <th>
+                            7-8
+                          </th>
+                          <th>
+                            8-9
+                          </th>
+                          <th>
+                            9-10
+                          </th>
+                          <th>
+                            10-11
+                          </th>
+                            <th>
+                            11-12
+                          </th>
+                            <th>
+                            12-13
+                          </th>
+                            <th>
+                            13-14
+                          </th>
+                            <th>
+                            14-15
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                          <td>
+                            DRUM A WASTAGE
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
 
-                     <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Purging wastage(in kgs)</label>
-                            <div class="col-sm-9">
-                                <input type="number" class="form-control mt-3"
-                                       placeholder="" name="purge_wastage">
-                            </div>
-                        </div>
+                        </tr>
+                        <tr>
+                          <td>
+                            DRUM A WASTAGE
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+
+                        </tr>
+                      <tr>
+                          <td>
+                            Purging waste in Kgs
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+                          <td>
+                            <input type="number" class="form-control" id="dark_spot">
+                          </td>
+
+                        </tr>
+                      </tbody>
+                    </table>
+                    </div>
+
                     </div>
 
 
 
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Drum A wastage</label>
-                            <div class="col-sm-9">
-                                <input type="number" class="form-control mt-3"
-                                       placeholder="" name="drum_a">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label"> Drum B wastage</label>
-                            <div class="col-sm-9">
-                                <input type="number" class="form-control mt-3"
-                                       placeholder="" name="drum_b">
-                            </div>
-                        </div>
-                    </div>
+
                     <button type="submit" class="btn btn-primary mr-2 mb-2"> Submit </button>
                     <button class="btn btn-secondary mb-2"> Cancel </button>
                 </div>
             </div>
         </div>
     </div>
+    </div>
+
 </form>
 {% endblock %}
 {% block js %}

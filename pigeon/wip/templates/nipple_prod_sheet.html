@@ -1,0 +1,291 @@
+{% extends "layout.html" %}  {% load static %}
+{% block  content %}
+<div class="row w-100 py-3 px-4 overflow-auto">
+    <form>
+        <table class="table-bordered table " style="width:100%;">
+  <colgroup span="2"></colgroup>
+
+  <tr>
+
+    <th colspan="4" scope="colgroup">Department(Section)</th>
+    <th colspan="4" scope="colgroup">Date</th>
+    <th colspan="4" scope="colgroup">Shift</th>
+    <th colspan="6" scope="colgroup">Process</th>
+    <th colspan="4" scope="colgroup">M/C</th>
+  </tr>
+  <tr>
+    <th colspan="2">Product</th>
+    <th colspan="2">Working 8 hours</th>
+    <th colspan="4">Morning Shift</th># radio button
+    <th >7:00</th>
+    <th >8:00</th>
+    <th >9:00</th>
+    <th >10:00</th>
+    <th >11:00</th>
+    <th >12:00</th>
+    <th >13:00</th>
+    <th >14:00</th>
+    <th >15:00</th>
+    <th >16:00</th>
+    <th >17:00</th>
+    <th >18:00</th>
+  </tr>
+  <tr>
+      <td colspan="8"> Staff operators hours and injection operators</td>
+
+        <th >8:00</th>
+        <th >9:00</th>
+        <th >10:00</th>
+        <th >11:00</th>
+        <th >12:00</th>
+        <th >13:00</th>
+        <th >14:00</th>
+        <th >15:00</th>
+        <th >16:00</th>
+        <th >17:00</th>
+        <th >18:00</th>
+        <th>19:00</th>
+        <th>TOTAL</th>
+  </tr>
+  <tr>
+
+        <th  rowspan=3 >Generation(Model)/ Lot No</th>
+        <th   rowspan=3 >HOUR</th>
+        <th  rowspan=3 >Total</th>
+        <th  rowspan=3 >Cycle time Plan</th>
+        <th  rowspan=3 >Good Production</th>
+        <th  rowspan=3 >Rejection %</th>
+        <th  rowspan=3 >Total no of production</th>
+        <th >Plan (pcs/hrs)</th>
+        <td name="7"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td name="18"></td>
+
+  </tr>
+  <tr>
+      <th >Actual (pcs/hrs)</th>
+      <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td name="18"></td>
+      <td name="18"></td>
+  </tr>
+  <tr>
+        <th> Box Number</th>
+      <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td name="18"></td>
+      <td name="18"></td>
+  </tr>
+  <tr>
+      <th colspan=22>Piece weight per box</th>
+  </tr>
+  <tr>
+    <th colspan="22">Staff working hours(inspection operators)</th>
+  </tr>
+  <tr>
+      <th  colspan="22" class="text-left py-3">NATURE OF DEFECTS</th>
+  </tr>
+  <tr>
+      <th  colspan="8" class="text-center">Dark Spot</th>
+      <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td name="18"></td>
+  </tr>
+  <tr>
+        <th  colspan="8" class="text-center">Bubbles</th>
+      <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td name="18"></td>
+  </tr>
+  <tr>
+        <th  colspan="8" class="text-center">Burr</th>
+      <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td name="18"></td>
+  </tr>
+  <tr>
+    <th  colspan="8" class="text-center">ShotShort</th>
+      <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td name="18"></td>
+  </tr>
+  <tr>
+        <th  colspan="8" class="text-center">Deformation</th>
+      <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td name="18"></td>
+  </tr>
+  <tr>
+      <th  colspan="8" class="text-center">White Spot</th>
+      <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td name="18"></td>
+  </tr>
+  <tr>
+        <th  colspan="8" class="text-center">Contamination</th>
+      <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td name="18"></td>
+  </tr>
+  <tr>
+    <th  colspan="8" class="text-center">Others</th>
+      <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td name="18"></td>
+  </tr>
+  <tr>
+      <th rowspan="3" class="text-center">TOTAL SUM</th>
+      <th colspan="7">Rejection</th>
+      <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td name="18"></td>
+  </tr>
+  <tr>
+      <th colspan="7"> Good Production</th>
+      <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td name="3"></td>
+  </tr>
+  <tr>
+      <th colspan="7"> Total</th>
+      <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td name="18"></td>
+  </tr>
+  <tr>
+      <th>QTY/box(pieces/box)(Pcs)</th>
+      <th></th>
+      <th> Working Time(M/c operation time)</th>
+  </tr>
+
+  </table>
+    </form>
+</div>
+{% endblock %}
