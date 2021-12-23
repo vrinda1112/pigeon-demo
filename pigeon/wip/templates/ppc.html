@@ -104,32 +104,86 @@ Calendar Styling */
     <!-- Calendar -->
   <div class="calendar shadow bg-white p-5 mt-0">
     <div class="d-flex align-items-center"><i class="fa fa-calendar fa-3x mr-3"></i>
-      <h2 class="month font-weight-bold mb-0 text-uppercase">December 2021</h2>
+      <h2 class="month font-weight-bold mb-0 text-uppercase" id ="month">December 2021</h2>
+
     </div>
-    <h3 class="font-italic mb-5 ml-3 mt-4">Production Plan - Targets achieved and missed </h3>
+    <div class="row">
+        <div class="col-md-4">
+        <h3 class="font-italic mb-5 ml-3 mt-4">Production Plan - Targets achieved and missed </h3>
+            </div>
+        <div class="col-md-4">
+            <select class="form-control" id="select_month" required>
+              <option value="JANUARY" >JAN</option>
+              <option value="FEBRUARY" >FEB</option>
+              <option value="MARCH" >MAR</option>
+              <option value="APRIL" >APR</option>
+              <option value="MAY" >MAY</option>
+              <option value="JUNE" >JUNE</option>
+              <option value="JULY" >JUL</option>
+              <option value="AUGUST" >AUG</option>
+              <option value="SEPTEMBER" >SEP</option>
+              <option value="OCTOBER" >OCT</option>
+              <option value="NOVEMBER" >NOV</option>
+              <option value="DECEMBER" >DEC</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <select class="form-control" id="select_item" required>
+              <option value="nipple_mold" >NIPPLE MOLDED</option>
+              <option value="nipple_pun">NIPPLE PUNCHED</option>
+              <option value="nipple_wrap">NIPPLE WRAP PRINTED</option>
+              <option value="nipple_post">NIPPLE POSTCURE</option>
+              <option value="nipple_lazer">NIPPLE LAZER MARKING</option>
+              <option value="bottle_mold">BOTTLE MOLDED</option>
+              <option value="bottle_print">BOTTLE PRINTED</option>
+              <option value="bottle_print">CAP MOLDED</option>
+              <option value="bottle_print">HOOD MOLDED</option>
+          </select>
+
+        </div>
+    </div>
     <ol class="day-names list-unstyled mb-0">
       {% for days in days %}
-      <li class="font-weight-bold text-uppercase" style="font-size: 15px;">{{ days }}</li>
+      <li class="font-weight-bold text-uppercase" style="font-size: 20px;">{{ days }}</li>
       {% endfor %}
     </ol>
 
     <ol class="days list-unstyled mb-0 mt-0">
       {% for d in data %}
       <center>
-        <li class="vl">
+        <li class="vl" style="background-color:{{ d.color_ach }}">
           <div class="row">
-            <div class="date col-lg-6 col-md-6"><strong style="font-size: 20px;">{{ forloop.counter }}</strong></div>
-         <div class="col-lg-6 col-md-6" ><strong  style="color: #002D72;" class="">Planned <br>{{ d.plan }}</strong></div>
+            <div class="date col-lg-6 col-md-6"><strong style="font-size: 25px;color:white;">{{ forloop.counter }}</strong></div>
+         <div class="col-lg-6 col-md-6" ><strong  style="color: white;" class="">Planned <br>{{ d.plan }}</strong></div>
             </div>
           <div class="row">
-          <div class="col-lg-6 col-md-6" ><strong style="color:{{ d.color_ach }};">Achieved <br> {{ d.ach }}</strong></div>
-          <div class="col-lg-6 col-md-6" ><strong style="color:{{ d.color_rej }};">Rejection  <br>{{ d.rej }} % </strong></div>
+          <div class="col-lg-6 col-md-6" ><strong style="color:white">Achieved <br> {{ d.ach }}</strong></div>
+          <div class="col-lg-6 col-md-6" ><strong style="color:white;">Rejection  <br>{{ d.rej }} % </strong></div>
           </div>
         </li>
-        </center>
+        </center>                   
       {% endfor %}
     </ol>
     <hr>
   </div>
 </div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript" src="//cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+
+<script type="text/javascript" >
+$(document).ready(function(){
+    $('#select_item').on('change', function() {
+        console.log( this.value );
+    });
+    $('#select_month').on('change', function() {
+        $("h2").text(this.value + " 2021");
+    });
+});
+</script>
 {% endblock %}
