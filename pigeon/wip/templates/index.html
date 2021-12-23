@@ -74,16 +74,7 @@
                     <div class="col-12 col-xl-4">
                         <div class=" justify-content-end d-flex">
                             <div class="row flex-md-grow-1 flex-xl-grow-0">
-                                <div class="col-md-4" style="color:#4747A1">
-                                    <h5 class="font-weight-bold">Today's Plan </h5>
-                                    <h6 class="font-weight-bold" id="chaldate" >{{ date }}</h6>
-                                </div>
-                                <div class="col-md-4">
-                                    <h4 class="font-weight-bold">Nipple 5000</h4>
-                                </div>
-                                <div class="col-md-4">
-                                    <h4 class="font-weight-bold">Bottle <br>3400</h4>
-                                </div>
+
                             </div>
 
                         </div>
@@ -101,13 +92,14 @@
                   <div class="flip-card-inner">
                     <div class="flip-card-front ">
 <!--                      <img src="/static/images/pigeonlogo.svg" alt="Avatar" style="width:60px;height:60px;">-->
-                        <h2 style="background:#4747A1!important;color:white;" class="mb-4">{{ k }}</h2>
+                        <h2 style="background:#4747A1!important;color:white;" class="mb-0">{{ k }}</h2>
+                        <h4 class="mb-4">{{ v.item | upper }}</h4>
                             <a href="/prod_report" style="color:{{ v.color }};">
                                 <div class="row ml-3 ">
                                         <a>Plan Today : </a><b>  {{ v.plan_today }} </b>
                                 </div><br>
                                 <div class="row ml-3">
-                                    <a>Achived till now : </a><b> {{ v.actual_till_now }}</b>
+                                    <a>Achieved till now : </a><b> {{ v.actual_till_now }}</b>
                                 </div>
 
                             </a>
@@ -148,100 +140,212 @@
         <div class="row mt-4 ml-2">
             <h2>Last hour Production Details</h2>
         </div>
-        <div class ="row mt-2">
-            <div class="col-md-4 grid-margin transparent">
-                <div class="row mt-4">
-                    <div class="col-md-6 mb-4 stretch-card">
-                        <div class="card card-dark-blue">
+        <div class ="row mt-1">
+            <div class="col-md-3 stretch-card grid-margin ">
+                        <div class="card text-white bg-danger">
                             <div class="card-body">
-                                <b class="mb-4">Total Production</b>
-                                <div class="row">
+                                <b class="fs-30">Bottle Molded</b><br>
+                                <div class="row mt-3">
                                     <div class="col-md-6 col-lg-6 col-sm-6">
-                                        <label class="fs-30">Bottle</label><br>
-                                        <b class="fs-30 mb-2">690</b>
+                                        <b class="fs-10 mb-2">Plan : 500</b>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-sm-6">
-                                        <label class="fs-30">Nipple</label><br>
-                                        <b class="fs-30 mb-2">712</b>
+                                        <b class="fs-10 mb-2">Actual : 400</b>
                                     </div>
                                 </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-4 stretch-card ">
-                        <div class="card card-dark-green" >
-                            <div class="card-body">
-                                <b class="mb-4">Total Good Production</b>
-                                <div class="row">
+                                <div class="row mt-3">
                                     <div class="col-md-6 col-lg-6 col-sm-6">
-                                        <label class="fs-30">Bottle</label><br>
-                                        <b class="fs-30 mb-2">600</b>
+                                        <b class="fs-10 mb-2">OEE : 99%</b>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-sm-6">
-                                        <label class="fs-30">Nipple</label><br>
-                                        <b class="fs-30 mb-2">570</b>
+                                        <b class="fs-10 mb-2">Rej : 1.4%</b>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
-                        <div class="card card-light-danger" >
+            <div class="col-md-3  stretch-card grid-margin">
+                        <div class="card text-white bg-danger">
                             <div class="card-body">
-                                <b class="mb-4">Today's Bad Production</b>
-                                <div class="row">
+                                <b class="fs-30">Bottle Printed</b><br>
+                                <div class="row mt-3">
                                     <div class="col-md-6 col-lg-6 col-sm-6">
-                                        <label class="fs-30">Bottle</label><br>
-                                        <b class="fs-30 mb-2">60</b>
+                                        <b class="fs-10 mb-2">Plan : 450</b>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-sm-6">
-                                        <label class="fs-30">Nipple</label><br>
-                                        <b class="fs-30 mb-2">102</b>
+                                        <b class="fs-10 mb-2">Actual : 342</b>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">OEE : 90%</b>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">Rej : 2.3%</b>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 stretch-card transparent">
-                        <div class="card card-light-warning">
+            <div class="col-md-3 stretch-card grid-margin ">
+                        <div class="card text-white bg-danger">
                             <div class="card-body">
-                                <b class="mb-4">Set up rejection</b>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label class="fs-30">Bottle</label><br>
-                                        <b class="fs-30 mb-2">30</b>
+                                <b class="fs-30">Nipple Molded</b><br>
+                                <div class="row mt-3">
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">Plan : 720</b>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label class="fs-30">Nipple</label><br>
-                                        <b class="fs-30 mb-2">42</b>
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">Actual : 650</b>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">OEE : 98%</b>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">Rej : 0.3%</b>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4 grid-margin ">
-                <div class="card transparent">
-                    <div class="card-body">
-                        <h3 class="card-title">Bottle production this hour</h3>
-                        <canvas id="pieChart_bottle"></canvas>
-
+            <div class="col-md-3 stretch-card grid-margin " >
+                        <div class="card text-white bg-success ">
+                            <div class="card-body">
+                                <b class="fs-30">Nipple Punched</b><br>
+                                <div class="row mt-3">
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">Plan : 650</b>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">Actual : 713</b>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">OEE : 94%</b>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">Rej : 1.3%</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4 grid-margin grid-margin">
-                <div class="card transparent">
-                    <div class="card-body">
-                        <h3 class="card-title">Nipple production this hour</h3>
-                        <canvas id="pieChart_nipple"></canvas>
-                    </div>
-                </div>
-            </div>
         </div>
+        <div class ="row mt-1">
+            <div class="col-md-3 stretch-card grid-margin ">
+                        <div class="card text-white bg-success">
+                            <div class="card-body">
+                                <b class="fs-30">Nipple Postcure</b><br>
+                                <div class="row mt-3">
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">Plan : 670</b>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">Actual : 690</b>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">OEE : 92%</b>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">Rej : 0.24%</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <div class="col-md-3  stretch-card grid-margin">
+                        <div class="card text-white bg-success">
+                            <div class="card-body">
+                                <b class="fs-30">Nipple Lazer  Marking</b><br>
+                                <div class="row mt-3">
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">Plan : 563</b>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">Actual : 590</b>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">OEE : 93%</b>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">Rej : 0.3%</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <div class="col-md-3 stretch-card grid-margin ">
+                        <div class="card text-white bg-success" >
+                            <div class="card-body">
+                                <b class="fs-30">Nipple Wrap Printed</b><br>
+                                <div class="row mt-3">
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">Plan : 730</b>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">Actual : 760</b>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">OEE : 88%</b>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">Rej : 0.1%</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <div class="col-md-3 stretch-card grid-margin ">
+                        <div class="card text-white bg-success">
+                            <div class="card-body">
+                                <b class="fs-30">Cap Molded</b><br>
+                                <div class="row mt-3">
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">Plan : 230</b>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">Actual : 290</b>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">OEE : 96%</b>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <b class="fs-10 mb-2">Rej : 0.3%</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+<!--            <div class="col-md-4 grid-margin ">-->
+<!--                <div class="card transparent">-->
+<!--                    <div class="card-body">-->
+<!--&lt;!&ndash;                        <h3 class="card-title">Bottle production this hour</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <canvas id="pieChart_bottle"></canvas>&ndash;&gt;-->
+
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4 grid-margin grid-margin">-->
+<!--                <div class="card transparent">-->
+<!--                    <div class="card-body">-->
+<!--&lt;!&ndash;                        <h3 class="card-title">Nipple production this hour</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <canvas id="pieChart_nipple"></canvas>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card position-relative">
@@ -259,6 +363,7 @@
                                                     Prodcution Details
                                                     Today </p>
                                                 <h1 class="text-primary">Nipple
+                                                    Molded
                                                     - SHIFT A</h1>
                                                 <p class="mb-2 mb-xl-0">The
                                                     detailed numbers of nipples
@@ -411,7 +516,7 @@
                                                 <p class="card-title">Detailed
                                                     Prodcution Details
                                                     Today </p>
-                                                <h1 class="text-primary">Nipple
+                                                <h1 class="text-primary">Nipple Molded
                                                     - SHIFT B</h1>
                                                 <p class="mb-2 mb-xl-0">The
                                                     detailed numbers of nipples
@@ -564,7 +669,7 @@
                                                 <p class="card-title">Detailed
                                                     Production Details
                                                     Today </p>
-                                                <h1 class="text-primary">Bottle
+                                                <h1 class="text-primary">Bottle Molded
                                                     -SHIFT A</h1>
                                                 <p class="mb-2 mb-xl-0">The
                                                     detailed numbers of bottles
@@ -716,7 +821,7 @@
                                                 <p class="card-title">Detailed
                                                     Production Details
                                                     Today </p>
-                                                <h1 class="text-primary">Bottle
+                                                <h1 class="text-primary">Bottle Molded
                                                     -SHIFT B</h1>
                                                 <p class="mb-2 mb-xl-0">The
                                                     detailed numbers of bottles
@@ -884,7 +989,21 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 col-lg-12 grid-margin stretch-card">
+            <div class="col-md-6 col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <p class="card-title">Production Report</p>
+                        </div>
+                        <p class="font-weight-500">The total production month
+                            wise</p>
+                        <div id="sales-legend"
+                             class="chartjs-legend mt-4 mb-2"></div>
+                        <canvas id="sales-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">

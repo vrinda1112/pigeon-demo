@@ -4,111 +4,115 @@
     padding-right:0;
     padding-left:0;
 }
-.active{
+.active{prod
     display:block;
 }
+input {
+    width:100%;
+}
+td {font-weight:bold;}
+tr td{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 {% endblock %}
 {% block  content %}
-<form class="form-prodcution" method="post">
+<form class="form_prod_sheet"  method="post">
     {% csrf_token %}
-<div class="row">
-    <div class="col-md-12 col-lg-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="card-header mb-1">
-                    <h4 class="card-title">FILL NIPPLE PRODUCTION DETAILS</h4></div>
-                    <div class="row">
-                        <div class="col padding-0">
-                                <div class="col">
-                                    <label><strong> Item Code</strong></label>
-                                    <select class="form-control" required>
-                                        <option>FO011</option>
-                                        <option>FO012</option>
-                                        <option>FO013</option>
-                                        <option>FO014</option>
-                                    </select>
-                                </div>
-                        </div>
-                        <div class="col padding-0">
-                                <div class="col-sm-12">
-                                    <label><strong>Product Type</strong></label>
-                                    <select class="form-control" required>
-                                        <option>S</option>
-                                        <option>M</option>
-                                        <option>L</option>
-                                        <option>Y</option>
-                                    </select>
-                                </div>
-                        </div>
-                        <div class="col padding-0">
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                        <div class="row">
+                            <div class="col padding-0">
+                                    <div class="col">
+                                        <label><strong> Item Code</strong></label>
+                                        <select class="form-control" required>
+                                            <option>FO011</option>
+                                            <option>FO012</option>
+                                            <option>FO013</option>
+                                            <option>FO014</option>
+                                        </select>
+                                    </div>
+                            </div>
+                            <div class="col padding-0">
+                                    <div class="col-sm-12">
+                                        <label><strong>Product Type</strong></label>
+                                        <select class="form-control" required>
+                                            <option>S</option>
+                                            <option>M</option>
+                                            <option>L</option>
+                                            <option>Y</option>
+                                        </select>
+                                    </div>
+                            </div>
+                            <div class="col padding-0">
 
-                                <label><strong>Shift</strong></label>
-                                <div class="col">
-                                    <select class="form-control" id="shifts" required>
-                                        <option>A</option>
-                                        <option>B</option>
-                                        <option>C</option>
-                                    </select>
-                                </div>
-                        </div>
-                        <div class="col padding-0">
-                            <label><strong>LOT No.</strong></label>
-                                <div class="col">
-                                    <input class="form-control" placeholder="HE01NA"
-                                           name="lot_no" required>
-                                </div>
+                                    <label><strong>Shift</strong></label>
+                                    <div class="col">
+                                        <select class="form-control" id="shifts" required>
+                                            <option>A</option>
+                                            <option>B</option>
+                                            <option>C</option>
+                                        </select>
+                                    </div>
+                            </div>
+                            <div class="col padding-0">
+                                <label><strong>LOT No.</strong></label>
+                                    <div class="col">
+                                        <input class="form-control" placeholder="HE01NA"
+                                               name="lot_no" required>
+                                    </div>
 
-                        </div>
-                        <div class="col padding-0">
-                            <label><strong>Piece weight</strong></label>
-                                <div class="col">
-                                    <input class="form-control" placeholder="6.5g"
-                                           name="avg_weight" required>
-                                </div>
-                        </div>
-                        <div class="colpadding-0">
-                            <label><strong>Material Lot no</strong></label>
-                                <div class="col">
-                                    <input type="text" class="form-control"
-                                           placeholder="PB203" value=""
-                                           name="rmat_lot_no" required>
-                                </div>
-                        </div>
-                        <div class="col padding-0">
+                            </div>
+                            <div class="col padding-0">
+                                <label><strong>Piece weight</strong></label>
+                                    <div class="col">
+                                        <input class="form-control" placeholder="6.5g"
+                                               name="avg_weight" required>
+                                    </div>
+                            </div>
+                            <div class="colpadding-0">
+                                <label><strong>Material Lot no</strong></label>
+                                    <div class="col">
+                                        <input type="text" class="form-control"
+                                               placeholder="PB203" value=""
+                                               name="rmat_lot_no" required>
+                                    </div>
+                            </div>
+                            <div class="col padding-0">
 
-                            <label><strong>Total Good Production</strong></label>
-                                <div class="col">
-                                    <input type="number" class="form-control"
-                                           placeholder="Total good production"
-                                           name="total_good_prod" required>
-                                </div>
+                                <label><strong>Total Good Production</strong></label>
+                                    <div class="col">
+                                        <input type="number" 
+                                               placeholder="Total good production"
+                                               name="total_good_prod" required>
+                                    </div>
 
-                        </div>
-                        <div class="col padding-0">
+                            </div>
+                            <div class="col padding-0">
 
-                            <label><strong>Material code</strong></label>
-                                <div class="col">
-                                    <input type="text" class="form-control"
-                                           placeholder="PB203" value="PB203"
-                                           name="rmat_code" required>
-                                </div>
+                                <label><strong>Material code</strong></label>
+                                    <div class="col">
+                                        <input type="text" class="form-control"
+                                               placeholder="PB203" value="PB203"
+                                               name="rmat_code" required>
+                                    </div>
 
-                        </div>
+                            </div>
+                    </div>
+
                 </div>
-
+                </div>
             </div>
-            </div>
-        </div>
     </div>
-    <div class="shift-wise">
-        <div class="col-lg-12 col-md-12 active">
+    <div class="row main-row-all-tables">
+        <div class="col-lg-12 col-md-12 rejection">
                   <div class="card">
                     <div class="card-body">
-                      <div class="card-header">
-                            <h4 class="card-title">REJECTION DETAILS, IF ANY</h4>
-                        </div>
                       <div class="table-responsive pt-3">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" style="width:100%">
                           <thead>
                             <tr>
                               <th>
@@ -136,7 +140,7 @@
                                 13-14
                               </th>
                                 <th>
-                                14-15
+                                14-15   
                               </th>
                             </tr>
                           </thead>
@@ -146,28 +150,28 @@
                                     Dark Spot
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control"  id="dark_spot_7_8">
+                                    <input type="number"    d="dark_spot_7">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot_8_9">
+                                    <input type="number"  id="dark_spot_8">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot_9_10">
+                                    <input type="number" id="dark_spot_9">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="dark_spot_10">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="dark_spot_11">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="dark_spot_12">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="dark_spot_13">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number" id="dark_spot_14">
                                   </td>
 
                                 </tr>
@@ -176,28 +180,28 @@
                                     Bubbles
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="bubbles">
+                                    <input type="number"  id="bubbles_7">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="bubbles_8">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="bubbles_9">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="bubbles_10">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="bubbles_11">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="bubbles_12">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="bubbles_13">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="bubbles_14">
                                   </td>
 
                                 </tr>
@@ -206,28 +210,28 @@
                                     Weld Line
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="weld_line_7"  value={{ weld_line_7 }}>
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="weld_line_8"  value={{ weld_line_8 }}>
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="weld_line_9"  value={{ weld_line_9 }}>
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="weld_line_10"  value={{ weld_line_10 }}>
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="weld_line_11"  value={{ weld_line_11 }}>
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="weld_line_12"  value={{ weld_line_12 }}>
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="weld_line_13"  value={{ weld_line_13 }}>
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="weld_line_14"  value={{ weld_line_14 }}>
                                   </td>
 
                                 </tr>
@@ -236,28 +240,28 @@
                                     Shotshort
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="shotshort_7">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="shotshort_8">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="shotshort_9">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="shotshort_10">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="shotshort_11">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="shotshort_12">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="shotshort_13">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="shotshort_14">
                                   </td>
 
                                 </tr>
@@ -265,28 +269,28 @@
                                   <td>Deformation
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="def_7">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="def_8">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="def_9">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="def_10">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="def_11">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="def_12">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="def_13">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="def_14">
                                   </td>
 
                                 </tr>
@@ -295,28 +299,28 @@
                                    White Spot
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="white_spot_7">
+                                  <td>
+                              </td>
+                                  <input type="number"  id="white_spot_8">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="white_spot_9">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="white_spot_10">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="white_spot_11">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="white_spot_12">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="white_spot_13">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
-                                  </td>
-                                  <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="white_spot_14">
                                   </td>
 
                                 </tr>
@@ -325,28 +329,28 @@
                                     Contanmination
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="contam_7">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="contam_8">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="contam_9">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="contam_10">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="contam_11">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="contam_12">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="contam_13">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  id="contam_14">
                                   </td>
 
                                 </tr>
@@ -355,28 +359,28 @@
                                     Silicon Thread
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  name="sil_th_7" value="{{ sil_th_7 }}">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  name="sil_th_8" value="{{ sil_th_8 }}">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  name="sil_th_9" value="{{ sil_th_9 }}">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  name="sil_th_10" value="{{ sil_th_10}}">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  name="sil_th_11" value="{{ sil_th_11 }}">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  name="sil_th_12" value="{{ sil_th_12 }}">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  name="sil_th_13" value="{{ sil_th_13 }}">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  name="sil_th_14" value="{{ sil_th_14 }}">
                                   </td>
 
                                 </tr>
@@ -385,30 +389,25 @@
                                    Cured Silicon
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  name="curel_sil_7" value="{{ curel_sil_7 }}">
+                                  </td>
+                                  <td><input type="number"  name="curel_sil_8" value="{{ curel_sil_8 }}"></td>
+                                  <td><input type="number"  name="curel_sil_9" value="{{ curel_sil_9 }}"></td>
+                                  <td>
+                                    <input type="number"  name="curel_sil_10" value="{{ curel_sil_10 }}">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  name="curel_sil_11" value="{{ curel_sil_11 }}">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  name="curel_sil_12" value="{{ curel_sil_12 }}">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  name="curel_sil_13" value="{{ curel_sil_13 }}">
                                   </td>
                                   <td>
-                                    <input type="number" class="form-control" id="dark_spot">
+                                    <input type="number"  name="curel_sil_14" value="{{ curel_sil_14}}">
                                   </td>
-                                  <td>
-                                    <input type="number" class="form-control" id="dark_spot">
-                                  </td>
-                                  <td>
-                                    <input type="number" class="form-control" id="dark_spot">
-                                  </td>
-                                  <td>
-                                    <input type="number" class="form-control" id="dark_spot">
-                                  </td>
-
                                 </tr>
                           </tbody>
                         </table>
@@ -416,272 +415,257 @@
                     </div>
                   </div>
                 </div >
-        <div class="col-md-12 col-lg-12">
-            <div class="row">
-                <div class="col-md-12 col-lg-12">
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 wastage-purge">
+                <div class="row downtime">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="card">
+                            <div class="table-responsive pt-3">
+                            <table class="table table-bordered" style="width:100%">
+                              <thead>
+                                <tr>
+                                  <th>
+                                    DOWNTINE( IN MINS)
+                                  </th>
+                                  <th>
+                                    7-8
+                                  </th>
+                                  <th>
+                                    8-9
+                                  </th>
+                                  <th>
+                                    9-10
+                                  </th>
+                                  <th>
+                                    10-11
+                                  </th>
+                                    <th>
+                                    11-12
+                                  </th>
+                                    <th>
+                                    12-13
+                                  </th>
+                                    <th>
+                                    13-14
+                                  </th>
+                                    <th>
+                                    14-15
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+
+                                <tr>
+                                  <td>
+                                    Middle plate
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="middle_7">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="middle_8">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="middle_9">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="middle_10">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="middle_11">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="middle_12">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="middle_13">
+                                  </td>
+
+                                  <td>
+                                    <input type="number"  id="middle_14">
+                                  </td>
+
+                                </tr>
+                              <tr>
+                                  <td>
+                                    Filter issue
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="filter_iss_7">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="filter_iss_8">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="filter_iss_9">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="filter_iss_10">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="filter_iss_11">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="filter_iss_12">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="filter_iss_13">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="filter_iss_14">
+                                  </td>
+
+                                </tr>
+                              </tbody>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row wastage">
                     <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">DOWNTIME DETAILS, IF ANY</h4>
-                        </div>
                         <div class="table-responsive pt-3">
-                        <table class="table table-bordered">
-                          <thead>
-                            <tr>
-                              <th>
-                                DOWNTINE
-                              </th>
-                              <th>
-                                7-8
-                              </th>
-                              <th>
-                                8-9
-                              </th>
-                              <th>
-                                9-10
-                              </th>
-                              <th>
-                                10-11
-                              </th>
-                                <th>
-                                11-12
-                              </th>
-                                <th>
-                                12-13
-                              </th>
-                                <th>
-                                13-14
-                              </th>
-                                <th>
-                                14-15
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
+                            <table class="table table-bordered" style="width:100%">
+                                <thead>
+                                <tr>
+                                  <th>
+                                    WASTAGE( in kgs)
+                                  </th>
+                                  <th>
+                                    7-8
+                                  </th>
+                                  <th>
+                                    8-9
+                                  </th>
+                                  <th>
+                                    9-10
+                                  </th>
+                                  <th>
+                                    10-11
+                                  </th>
+                                    <th>
+                                    11-12
+                                  </th>
+                                    <th>
+                                    12-13
+                                  </th>
+                                    <th>
+                                    13-14
+                                  </th>
+                                    <th>
+                                    14-15
+                                  </th>
+                                </tr>
+                              </thead>
+                                <tbody>
+                                <tr>
+                                  <td>
+                                    DRUM A WASTAGE
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="drum_a_7">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="drum_a_8">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="drum_a_9">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="drum_a_10">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="drum_a_11">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="drum_a_12">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="drum_a_13">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="drum_a_14">
+                                  </td>
 
-                            <tr>
-                              <td>
-                                Middle plate
-                              </td>
-                              <td>
-                                <input type="number" class="form-control" id="dark_spot">
-                              </td>
-                              <td>
-                                <input type="number" class="form-control" id="dark_spot">
-                              </td>
-                              <td>
-                                <input type="number" class="form-control" id="dark_spot">
-                              </td>
-                              <td>
-                                <input type="number" class="form-control" id="dark_spot">
-                              </td>
-                              <td>
-                                <input type="number" class="form-control" id="dark_spot">
-                              </td>
-                              <td>
-                                <input type="number" class="form-control" id="dark_spot">
-                              </td>
-                              <td>
-                                <input type="number" class="form-control" id="dark_spot">
-                              </td>
-                              <td>
-                                <input type="number" class="form-control" id="dark_spot">
-                              </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    DRUM B WASTAGE
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="drum_b_7">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="drum_b_8">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="drum_b_9">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="drum_b_10">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="drum_b_11">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="drum_b_12">
+                                  </td>
+                                  <td>                        
+                                    <input type="number"  id="drum_b_13">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="drum_b_14">
+                                  </td>
 
-                            </tr>
-                          <tr>
-                              <td>
-                                Filter issue
-                              </td>
-                              <td>
-                                <input type="number" class="form-control" id="dark_spot">
-                              </td>
-                              <td>
-                                <input type="number" class="form-control" id="dark_spot">
-                              </td>
-                              <td>
-                                <input type="number" class="form-control" id="dark_spot">
-                              </td>
-                              <td>
-                                <input type="number" class="form-control" id="dark_spot">
-                              </td>
-                              <td>
-                                <input type="number" class="form-control" id="dark_spot">
-                              </td>
-                              <td>
-                                <input type="number" class="form-control" id="dark_spot">
-                              </td>
-                              <td>
-                                <input type="number" class="form-control" id="dark_spot">
-                              </td>
-                              <td>
-                                <input type="number" class="form-control" id="dark_spot">
-                              </td>
-
-                            </tr>
-                          </tbody>
-                        </table>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    Purging waste (in Kgs)
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="purge_7">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="purge_8">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="purge_9">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="purge_10">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="purge_11">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="purge_12">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="purge_13">
+                                  </td>
+                                  <td>
+                                    <input type="number"  id="purge_14">
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
                         </div>
                     </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-md-12 col-lg-12">
-        <div class="row">
-            <div class="col-md-12 col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">WASTAGE DETAILS, IF ANY</h4>
-                    </div>
-
-                    <div class="table-responsive pt-3">
-                    <table class="table table-bordered">
-                      <thead>
-                        <tr>
-                          <th>
-                            WASTAGE
-                          </th>
-                          <th>
-                            7-8
-                          </th>
-                          <th>
-                            8-9
-                          </th>
-                          <th>
-                            9-10
-                          </th>
-                          <th>
-                            10-11
-                          </th>
-                            <th>
-                            11-12
-                          </th>
-                            <th>
-                            12-13
-                          </th>
-                            <th>
-                            13-14
-                          </th>
-                            <th>
-                            14-15
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      <tr>
-                          <td>
-                            DRUM A WASTAGE
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-
-                        </tr>
-                        <tr>
-                          <td>
-                            DRUM A WASTAGE
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-
-                        </tr>
-                      <tr>
-                          <td>
-                            Purging waste in Kgs
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-                          <td>
-                            <input type="number" class="form-control" id="dark_spot">
-                          </td>
-
-                        </tr>
-                      </tbody>
-                    </table>
-                    </div>
-
-                    </div>
-
-
-
-
-                    <button type="submit" class="btn btn-primary mr-2 mb-2"> Submit </button>
-                    <button class="btn btn-secondary mb-2"> Cancel </button>
-                </div>
-            </div>
+               </div>
         </div>
     </div>
-    </div>
-
+    <br>
+    <center>
+     <button type="submit" class="btn btn-primary mr-2 mb-2"> Submit </button>
+            <button class="btn btn-secondary mb-2"> Cancel </button>
+     </center>
 </form>
 {% endblock %}
+
 {% block js %}
 <script type="text/javascript" >
-
-
-
 window.onload = function() {
   // provs is an object but you can think of it as a lookup table
   var provs = {
@@ -716,5 +700,18 @@ window.onload = function() {
   }
 };
 
+$( ".form_prod_sheet" ).submit(function( event ) {
+  alert( "Handler for .submit() called." );
+  event.preventDefault();
+  form_data = $(".form_prod_sheet").serialize();
+  console.log(form_data);
+  $.ajax({
+        url:"",
+        type:"post",
+
+
+  });
+
+});
 </script>
 {% endblock %}

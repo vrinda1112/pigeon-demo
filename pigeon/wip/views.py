@@ -36,7 +36,6 @@ class Login(View):
     def post(self,request):
         email = request.POST.get('email')
         password = request.POST.get('password')
-        print(email,password)
         user = User.objects.get(email=email)
         user_obj = authenticate(request, username='demouser', password=password)
         # user = user_obj.authenticate(request,
@@ -68,8 +67,7 @@ class Homepage(View):
     @method_decorator(login_required)
     def get(self,request):
         from wip.data import prod_data
-        df = pd.read_excel('wip/Final Production Report Aug-Nov 2021.xlsx',
-            'Data Sheet Aug-2021')
+        # from wip.data import bar_graph_month
         process =  {'B1':{'plan':2503,'item':'bottle molded',
                                   'pp-out':2250,'oee':88, 'actual':2650,
                           'rej':2.2,'color':"green",'plan_today':4000, 'actual_till_now':2300},
@@ -103,48 +101,25 @@ class Homepage(View):
                      'WR':{'plan':3450, 'item':'nipple wrap printed',
                           'pp-out':3300,'oee':97.32,'month':'nov', 'actual':3330,'rej':2.3,'color':'red',
                            'plan_today':2303, 'actual_till_now':900},
-
                      }
-
-
-        new_header = df.iloc[1]  # grab the first row for the header
-        df = df[2:]  # take the data less the header row
-        df.columns = new_header  # set the header row as the df header
-        df = df.loc[:, df.columns.notnull()]
-        df['Date'] = df['Date'].astype(str)
-        mask = df.sort_values(by=['Date'], ascending=False)
-        mask = df[(df['Date'] == "2021-11-30 00:00:00")]
-        columns = mask.columns.to_list()
-        cols = {
-            s: s.upper().replace("%", "").strip().replace(".", "").replace("\n",
-                "").replace("/", "_") for s in columns}
-        mask.rename(columns=cols, inplace=True)
-        mc_yest = mask.groupby(['M_C NO'])['OEE','REJ'].mean().reset_index()
-        mc_yest = mc_yest.to_dict(orient='records')
-        oee_rej_mc = {k.get('M_C NO'):{'oee':k.get('OEE'),'rej':k.get('REJ')} for k in mc_yest}
-        pp = prod_data[0]
-        today_data  = {'B1':{'plan':4000, 'actual':2300},
-                     'B2':{'plan':'No plan from PPC'},
-                     'L1':{'plan':4300, 'actual':1300},
-                     'L2':{'plan':2310,'actual':1231},
-                     "PR1":{'plan':3411,'actual':1211},
-                     'INJ1': {'plan':"np plan from PPC"},
-                     'LZR': {'plan':6523,'actual':3411},
-                     'LZ1': {'plan':3234,'actual':987},
-                      'WR1':{'plan':4521,'actual':313},
-                     'WR2':{'plan':5622,'actual':3211},
-                     'WR':{'plan':5200,'actual':3412}
-                     }
-
-        print(pp,"As")
-        data2show = {'oee':pp.get('OEE'),'plan-vs-actual':pp.get('PLAN VS ACTUAL ACHIEVEMENT'),
-               'sku':pp.get('SKU'),"machine":pp.get('M/C NO')
-        }
+        today_data = {'B1': {'plan': 4000, 'actual': 2300},
+                      'B2': {'plan': 'No plan from PPC'},
+                      'L1': {'plan': 4300, 'actual': 1300},
+                      'L2': {'plan': 2310, 'actual': 1231},
+                      "PR1": {'plan': 3411, 'actual': 1211},
+                      'INJ1': {'plan': "np plan from PPC"},
+                      'LZR': {'plan': 6523, 'actual': 3411},
+                      'LZ1': {'plan': 3234, 'actual': 987},
+                      'WR1': {'plan': 4521, 'actual': 313},
+                      'WR2': {'plan': 5622, 'actual': 3211},
+                      'WR': {'plan': 5200, 'actual': 3412}
+                      }
         yester = date.today() - timedelta(days=1)
         context={'data_today':today_data,
                  'date':date.today(),
                  'machines':process,
                  'yester':yester,
+
                  }
         return render(request,'index.html',context=context)
 
@@ -175,7 +150,6 @@ def ppc_view(request,item):
     import calendar
     import datetime
     import random
-
     now = datetime.datetime.now()
     dates_ = calendar.monthrange(now.year, now.month)[1]
     date1 = date.today().replace(day=1).strftime("%A")
@@ -183,43 +157,25 @@ def ppc_view(request,item):
                   range(7)]
     dates_ = [i for i in range(dates_ + 1) if i != 0]
     context = {'dates': dates_, 'days': seven_days}
-    if item == "nipple":
-        nipple = []
-        for i in range(len(dates_)):
-            nipple_d = {}
-            achieved = random.randint(5000, 5500)
-            ppc = random.randint(5200,5600)
-            reject = round(random.uniform(0.5, 3.5),1)
-            if achieved > ppc:
-                color_ach = "green"
-            else:
-                color_ach = "#b94e48"
-            if reject > 1.5:
-                color_rej = "#b94e48"
-            else:
-                color_rej = "green"
-            nipple_d.update({'plan':ppc,'ach':achieved,'rej':reject,
-                             'color_rej':color_rej,'color_ach':color_ach})
-            nipple.append(nipple_d)
-        context.update(data=nipple)
+    nipple = []
+    for i in range(len(dates_)):
+        nipple_d = {}
+        achieved = random.randint(7200, 8300)
+        ppc = random.randint(7000,7800)
+        reject = round(random.uniform(0.5, 3.5),1)
+        if achieved > ppc:
+            color_ach = "#2e8b57"
+        else:
+            color_ach = "#b94e48"
+        if reject > 1.5:
+            color_rej = "#b94e48"
+        else:
+            color_rej = "green"
+        nipple_d.update({'plan':ppc,'ach':achieved,'rej':reject,
+                         'color_rej':color_rej,'color_ach':color_ach})
+        nipple.append(nipple_d)
+    context.update(data=nipple)
 
-    elif item =="bottle":
-        bottle  =[]
-        for i in range(len(dates_)):
-            bottle_d = {}
-            achieved = random.randint(5000, 5500)
-            ppc = random.randint(5200,5600)
-            reject = round(random.uniform(0.5, 3.5),1)
-            if achieved >ppc:
-                color_ach = "green"
-            else: color_ach ="#b94e48"
-            if reject > 2.5:
-                color_rej = "#b94e48"
-            else: color_rej="green"
-            bottle_d.update({'plan':ppc,'ach':achieved,'rej':reject,
-                             'color_rej':color_rej,'color_ach':color_ach})
-            bottle.append(bottle_d)
-        context.update(data=bottle)
     return render(request,'ppc.html', context)
 
 
